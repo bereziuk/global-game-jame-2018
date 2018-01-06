@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TypeScript + Webpack + A-Frame starter</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <div class="hud">TypeScript + Webpack + A-Frame starter</div>
+
+    <a-scene id="scene-main">
+        <!-- Asset management system. -->
+        <a-assets>
+            <!-- <a-asset-item id="horse-obj" src="horse.obj"></a-asset-item> -->
+            <!-- <audio id="neigh" src="neigh.mp3"></audio> -->
+            <img id="texture-ball" src="./textures/ball.png">
+        </a-assets>
+
+        <!-- Scene setup -->
+        <a-entity id="camera-main"></a-entity>
+        <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; fog: 0.94; shadow: true;"></a-entity>
+
+         <!-- Scene elements -->
+         <a-entity>
+            <a-sphere position="-5 1.25 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-animation attribute="position"
+               dur="3000"
+               fill="forwards"
+               easing="ease-elastic"
+               direction="alternate"
+               to="0 5 -5"
+               repeat="indefinite"></a-animation>
+        </a-entity>
+
+        <a-entity>
+            <a-sphere position="0 1.25 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-animation attribute="position"
+                dur="3000"
+                delay="1000"
+                fill="forwards"
+                easing="ease-elastic"
+                direction="alternate"
+                to="0 5 -5"
+                repeat="indefinite"></a-animation>
+        </a-entity>
+
+        <a-entity>
+            <a-sphere position="5 1.25 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-animation attribute="position"
+                dur="3000"
+                delay="2000"
+                fill="forwards"
+                easing="ease-elastic"
+                direction="alternate"
+                to="0 5 -5"
+                repeat="indefinite"></a-animation>
+        </a-entity>
+    </a-scene>
+
+    <script src="./main.bundle.js"></script>
+</body>
+</html>
