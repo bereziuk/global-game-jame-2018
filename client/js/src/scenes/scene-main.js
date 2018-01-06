@@ -1,5 +1,5 @@
 import { colors } from '../utils/constants';
 
-export function buildSceneMain() {
+export function sceneMainInitialize() {
     const sceneMain = document.getElementById('scene-main');
 }
