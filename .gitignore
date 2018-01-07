@@ -5,3 +5,4 @@ tmp
 .DS_Store
 .idea
 npm-debug.log
+!client/assets/models/*.obj
