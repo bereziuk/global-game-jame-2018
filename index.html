@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
 
     <!-- Vendors -->
+    <script src="/scripts/jquery/dist/jquery.js"></script>
     <script src="/scripts/aframe/dist/aframe.js"></script>
     <script src="/scripts/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 
@@ -22,29 +23,33 @@
     <div class="hud">ES6 + Node + Webpack + A-Frame starter</div>
 
     <a-scene id="scene-main">
-        <!-- Asset management system. -->
         <a-assets>
+            <a-asset-item id="model-gun-obj" src="/assets/models/gun.obj"></a-asset-item>
+            <a-asset-item id="model-gun-mtl" src="/assets/models/gun.mtl"></a-asset-item>
             <img id="texture-ball" src="/assets/textures/ball.png">
         </a-assets>
 
-        <!-- Scene setup -->
-        <a-entity id="camera-main" gamepad-controlsnpm install aframe-gamepad-controls></a-entity>
-        <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; fog: 0.94; shadow: true;"></a-entity>
+        <a-camera id="camera-main">
+            <a-cursor raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;">
+                <a-entity obj-model="obj: #model-gun-obj" material="color: #555" scale="0.15 0.15 0.15"; rotation="-10 190 0" position="0.25 -0.5 0.25"></a-entity>
+            </a-cursor>
+        </a-camera>
 
-         <!-- Scene elements -->
+        <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; fog: 0.95; shadow: true;"></a-entity>
+
          <a-entity>
-            <a-sphere position="-5 2 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-sphere position="-5 2 -10" radius="1.25" shadow material="src: #texture-ball;" class="clickable-ball"></a-sphere>
             <a-animation attribute="position"
-               dur="3000"
-               fill="forwards"
-               easing="ease-elastic"
-               direction="alternate"
-               to="0 5 -5"
-               repeat="indefinite"></a-animation>
+                dur="3000"
+                fill="forwards"
+                easing="ease-elastic"
+                direction="alternate"
+                to="0 5 -5"
+                repeat="indefinite"></a-animation>
         </a-entity>
 
         <a-entity>
-            <a-sphere position="0 2 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-sphere position="0 2 -10" radius="1.25" shadow material="src: #texture-ball;"  class="clickable"></a-sphere>
             <a-animation attribute="position"
                 dur="3000"
                 delay="1000"
@@ -56,7 +61,7 @@
         </a-entity>
 
         <a-entity>
-            <a-sphere position="5 2 -10" radius="1.25" shadow material="src: #texture-ball;"></a-sphere>
+            <a-sphere position="5 2 -10" radius="1.25" shadow material="src: #texture-ball;" class="clickable"></a-sphere>
             <a-animation attribute="position"
                 dur="3000"
                 delay="2000"
