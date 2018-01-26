@@ -24,52 +24,18 @@
 
     <a-scene id="scene-main">
         <a-assets>
-            <a-asset-item id="model-gun-obj" src="/assets/models/gun.obj"></a-asset-item>
-            <a-asset-item id="model-gun-mtl" src="/assets/models/gun.mtl"></a-asset-item>
             <img id="texture-ball" src="/assets/textures/ball.png">
+            <img id="texture-tape" src="/assets/textures/tape.png">
         </a-assets>
-
-        <a-camera id="camera-main">
-            <a-cursor raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;">
-                <a-entity obj-model="obj: #model-gun-obj" material="color: #555" scale="0.15 0.15 0.15"; rotation="-10 190 0" position="0.25 -0.5 0.25"></a-entity>
-            </a-cursor>
-        </a-camera>
 
         <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; fog: 0.95; shadow: true;"></a-entity>
 
-         <a-entity>
-            <a-sphere position="-5 2 -10" radius="1.25" shadow material="src: #texture-ball;" class="clickable-ball"></a-sphere>
-            <a-animation attribute="position"
-                dur="3000"
-                fill="forwards"
-                easing="ease-elastic"
-                direction="alternate"
-                to="0 5 -5"
-                repeat="indefinite"></a-animation>
+        <a-entity position="0 1.1 0">
+            <a-camera id="camera-main"></a-camera>
         </a-entity>
 
         <a-entity>
-            <a-sphere position="0 2 -10" radius="1.25" shadow material="src: #texture-ball;"  class="clickable"></a-sphere>
-            <a-animation attribute="position"
-                dur="3000"
-                delay="1000"
-                fill="forwards"
-                easing="ease-elastic"
-                direction="alternate"
-                to="0 5 -5"
-                repeat="indefinite"></a-animation>
-        </a-entity>
-
-        <a-entity>
-            <a-sphere position="5 2 -10" radius="1.25" shadow material="src: #texture-ball;" class="clickable"></a-sphere>
-            <a-animation attribute="position"
-                dur="3000"
-                delay="2000"
-                fill="forwards"
-                easing="ease-elastic"
-                direction="alternate"
-                to="0 5 -5"
-                repeat="indefinite"></a-animation>
+            <a-box id="tape" src="#texture-tape" position="3 1 -2" depth="1" height="1" width="6"></a-box>
         </a-entity>
     </a-scene>
 </body>
