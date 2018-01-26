@@ -35,11 +35,43 @@
             <img id="texture-tape" src="/assets/textures/tape.png">
         </a-assets>
 
-        <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; fog: 0.95; shadow: true;"></a-entity>
 
-        <a-entity position="0 1.1 0">
-            <a-camera id="camera-main"></a-camera>
+        <a-camera id="camera-main" position="0 -0.05 0.95" rotation="-24.866 0.344 0">
+            <a-cursor raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;"></a-cursor>
+        </a-camera>
+
+
+        <a-entity id="kasownik" position="0 0 0">
+            <a-sphere position="0 0 0"
+                      material="src:#texture-box"
+                      class="clickable"
+                      rotation="0 0 0"
+                      scale="1 2 1"
+                      visible="true"
+                      geometry="primitive:box;radius:1.25"></a-sphere>
+
+            <a-sphere position="0 0.93 0"
+                      material="src:#texture-box"
+                      class="clickable"
+                      rotation="0 0 0"
+                      scale="0.5 0.15 0.5"
+                      color="red"
+                      visible="true"
+                      opacity="0.5"
+                      geometry="primitive:box;radius:1.25"></a-sphere>
+
+            <a-sphere position="0 1.100 -0.460"
+                      material="src:#texture-box"
+                      class="clickable"
+                      rotation="0 0 0"
+                      scale="0.745 0.380 0.073"
+                      color="blue"
+                      visible="true"
+                      opacity="0.5"
+                      geometry="primitive:box;radius:1.25"></a-sphere>
         </a-entity>
+
+        <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;"></a-entity>
 
         <a-entity>
             <a-box id="tape" src="#texture-tape" position="3 1 -2" depth="1" height="1" width="6"></a-box>
