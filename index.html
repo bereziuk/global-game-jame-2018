@@ -13,7 +13,12 @@
     <!-- Vendors -->
     <script src="/scripts/jquery/dist/jquery.js"></script>
     <script src="/scripts/aframe/dist/aframe.js"></script>
+    <script src="/scripts/aframe-click-drag-component/dist/aframe-click-drag-component.min.js"></script>
     <script src="/scripts/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+    <script>
+        registerAframeClickDragComponent(window.AFRAME);
+    </script>
 
     <!-- App -->
     <script src="/js/bundle/app.bundle.js"></script>
@@ -23,6 +28,8 @@
     <div class="hud">ES6 + Node + Webpack + A-Frame starter</div>
 
     <a-scene id="scene-main">
+        <a-sphere click-drag position="0 1.25 -10" radius="1.25" color="#EF2D5E"></a-sphere>
+
         <a-assets>
             <img id="texture-ball" src="/assets/textures/ball.png">
             <img id="texture-tape" src="/assets/textures/tape.png">
