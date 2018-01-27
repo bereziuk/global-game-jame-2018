@@ -28,6 +28,10 @@ export function registerSceneMain() {
             });
 
             document.addEventListener("keydown", (event) => {
+                if (event.keyCode !== 32) {
+                    return;
+                }
+
                 if (isItemActive) {
                     isItemActive = false;
                     let shopItem = document.getElementById("test-sphere");

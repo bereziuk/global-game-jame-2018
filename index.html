@@ -24,7 +24,13 @@
 
 <a-scene id="scene-main" physics="debug: true" scene-main>
 
-
+    <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
+        <a-plane static-body
+                 position="0 -0.1 -4"
+                 rotation="-90 0 0"
+                 width="400"
+                 height="400"></a-plane>
+    </a-entity>
 
     <a-sphere click-drag
               dynamic-body
@@ -34,7 +40,24 @@
               color="#EF2D5E"></a-sphere>
 
     <a-assets>
+        <!-- SHOP CHECKOUT -->
         <a-asset-item id="model-shop-checkout" src="/assets/models/shop-checkout/shop-checkout.dae"></a-asset-item>
+        <!-- CARS -->
+        <a-asset-item id="model-car-blue-obj" src="/assets/models/cars/car-normal-blue.obj"></a-asset-item>
+        <a-asset-item id="model-car-blue-mtl" src="/assets/models/cars/car-normal-blue.mtl"></a-asset-item>
+        <a-asset-item id="model-car-citrus-obj" src="/assets/models/cars/car-normal-citrus.obj"></a-asset-item>
+        <a-asset-item id="model-car-citrus-mtl" src="/assets/models/cars/car-normal-citrus.mtl"></a-asset-item>
+        <a-asset-item id="model-car-green-obj" src="/assets/models/cars/car-normal-green.obj"></a-asset-item>
+        <a-asset-item id="model-car-green-mtl" src="/assets/models/cars/car-normal-green.mtl"></a-asset-item>
+        <a-asset-item id="model-car-orange-obj" src="/assets/models/cars/car-normal-orange.obj"></a-asset-item>
+        <a-asset-item id="model-car-orange-mtl" src="/assets/models/cars/car-normal-orange.mtl"></a-asset-item>
+        <a-asset-item id="model-car-red-obj" src="/assets/models/cars/car-normal-red.obj"></a-asset-item>
+        <a-asset-item id="model-car-red-mtl" src="/assets/models/cars/car-normal-red.mtl"></a-asset-item>
+        <a-asset-item id="model-car-silver-obj" src="/assets/models/cars/car-normal-silver.obj"></a-asset-item>
+        <a-asset-item id="model-car-silver-mtl" src="/assets/models/cars/car-normal-silver.mtl"></a-asset-item>
+        <a-asset-item id="model-car-violet-obj" src="/assets/models/cars/car-normal-violet.obj"></a-asset-item>
+        <a-asset-item id="model-car-violet-mtl" src="/assets/models/cars/car-normal-violet.mtl"></a-asset-item>
+        <!-- TEXTURES -->
         <img id="texture-ball" src="/assets/textures/ball.png">
         <img id="texture-tape" src="/assets/textures/tape.png">
     </a-assets>
@@ -50,7 +73,7 @@
         </a-cursor>
     </a-camera>
 
-    <a-entity id="shop">
+    <a-entity id="shop" position="0 0 -1.25">
         <a-entity id="shop-down-wall">
             <a-box material="src:#texture-box"
                    position="5.12 0.500 -7.75"
@@ -75,15 +98,65 @@
             <a-box material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 7.75"  scale="19.8 2 0.05"></a-box>
             <a-box material="src:#texture-box" opacity="0.3" color="blue" position="15   0.5 0"     scale="0.05 2 15.55"></a-box>
         </a-entity>
+<!--
         <a-entity id="shop-roof" position="0 3 0">
             <a-box material="src:#texture-box" color="grey" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
         </a-entity>
+-->
         <a-entity id="shop-floor" position="0 0 0">
             <a-box material="src:#texture-box" color="yellow" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
         </a-entity>
     </a-entity>
 
+    <!-- ACTIVE CHECKOUT -->
     <a-entity collada-model="#model-shop-checkout" position="-1.56 0 1.51" scale="1.35 1.2 2"></a-entity>
+
+    <!-- CHECKOUTS -->
+    <a-entity collada-model="#model-shop-checkout" position="-1.56 0 -2" scale="1.35 1.2 2"></a-entity>
+    <a-entity collada-model="#model-shop-checkout" position="-1.56 0 5" scale="1.35 1.2 2"></a-entity>
+    <a-entity collada-model="#model-shop-checkout" position="-1.56 0 -5.5" scale="1.35 1.2 2"></a-entity>
+
+    <!-- TRASH -->
+    <a-entity id="trash-1" position="-4.26 0 -8.26">
+        <a-cylinder static-body
+               geometry="segmentsRadial: 18; primitive: cylinder"
+               color="grey"
+               radius="0.3"
+               height="0.6"
+               position="0 0.3 0"></a-cylinder>
+        <a-cylinder static-body
+               geometry="segmentsRadial: 9; primitive: cylinder"
+               color="grey"
+                    radius="0.35"
+                    height="0.05"
+               position="0 0.6 0"></a-cylinder>
+        <a-cylinder static-body
+               geometry="segmentsRadial: 18; primitive: cylinder"
+               radius="0.05"
+               height="0.05"
+               color="grey"
+               position="0 0.65 0"></a-cylinder>-->
+    </a-entity>
+    <a-entity id="trash-2" position="-4.26 0 5.88">
+        <a-cylinder static-body
+               geometry="segmentsRadial: 18; primitive: cylinder"
+               color="grey"
+               radius="0.3"
+               height="0.6"
+               position="0 0.3 0"></a-cylinder>
+        <a-cylinder static-body
+               geometry="segmentsRadial: 9; primitive: cylinder"
+               color="grey"
+                    radius="0.35"
+                    height="0.05"
+               position="0 0.6 0"></a-cylinder>
+        <a-cylinder static-body
+               geometry="segmentsRadial: 18; primitive: cylinder"
+               radius="0.05"
+               height="0.05"
+               color="grey"
+               position="0 0.65 0"></a-cylinder>-->
+    </a-entity>
 
     <a-entity id="packing-zone" position="0.5 0 0.5">
         <a-box static-body
@@ -139,15 +212,7 @@
 
     </a-entity>
 
-    <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
-        <a-plane static-body
-                 position="0 -0.1 -4"
-                 rotation="-90 0 0"
-                 width="400"
-                 height="400"></a-plane>
-    </a-entity>
-
-    <a-entity id="basket-1" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0">
+    <a-entity id="basket-1" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 0">
         <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
@@ -155,7 +220,7 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
     </a-entity>
 
-    <a-entity id="basket-2" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0.4">
+    <a-entity id="basket-2" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 0.4">
         <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
@@ -163,7 +228,7 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
     </a-entity>
 
-    <a-entity id="basket-3" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0.8">
+    <a-entity id="basket-3" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 0.8">
         <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
@@ -171,7 +236,7 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
     </a-entity>
 
-    <a-entity id="basket-4" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 1.2">
+    <a-entity id="basket-4" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 1.2">
         <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
@@ -186,6 +251,15 @@
                position="3.5 0 0"
                scale="6 2 1"></a-box>
     </a-entity>
+
+    <a-entity obj-model="mtl: #model-car-violet-mtl; obj: #model-car-violet-obj" position="11.762 0.004 -10.938" scale="1.4 1.4 1.4"></a-entity>
+    <a-entity obj-model="obj: #model-car-silver-obj; mtl: #model-car-silver-mtl" position="9.073 0.004 -11.38" rotation="0 11.66 0" scale="1.6 1.6 1.6"></a-entity>
+    <a-entity obj-model="mtl: #model-car-red-mtl; obj: #model-car-red-obj" position="6.087 0.004 -11.38" rotation="0 -18.65 0" scale="1.4 1.4 1.4"></a-entity>
+    <a-entity obj-model="mtl: #model-car-orange-mtl; obj: #model-car-orange-obj" position="2.947 0.004 -11.38" scale="1.5 1.5 1.5"></a-entity>
+    <a-entity obj-model="mtl: #model-car-green-mtl; obj: #model-car-green-obj" position="0.194 0.004 -11.38" scale="1.4 1.4 1.4"></a-entity>
+    <a-entity obj-model="obj: #model-car-citrus-obj; mtl: #model-car-citrus-mtl" position="-2.246 0.004 -11.988" rotation="0 -11.13 0" scale="1.4 1.4 1.4"></a-entity>
+    <a-entity obj-model="obj: #model-car-blue-obj; mtl: #model-car-blue-mtl" position="-4.476 0.004 -12.546" rotation="0 6.68 0" scale="1.7 1.7 1.7"></a-entity>
+
 </a-scene>
 </body>
 </html>
