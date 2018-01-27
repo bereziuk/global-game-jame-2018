@@ -22,14 +22,24 @@
 <body>
 <div class="hud">Cashier Simulator VR</div>
 
-<a-scene id="scene-main" physics="debug: true" scene-main>
-    <a-sphere click-drag
+<a-scene id="scene-main" physics="debug: false" scene-main>
+    <!-- <a-sphere click-drag
               dynamic-body
               test-sphere
               id="test-sphere"
               position="1 1.15 -0.15"
               radius="0.15"
-              color="#EF2D5E"></a-sphere>
+              color="#EF2D5E"></a-sphere> -->
+
+    <a-box click-drag
+            dynamic-body
+            test-sphere
+            id="test-sphere"
+            rotation="0 45"
+            mass="0.1"
+            position="2 1.45 -0.15"
+            scale="0.1 0.1 0.1"
+            color="#EF2D5E"></a-box>
 
     <a-assets>
         <img id="texture-ball" src="/assets/textures/ball.png">
@@ -43,7 +53,6 @@
 
     <a-entity id="packing-zone" position="0.5 0 0.5">
         <a-box static-body
-               id="tape"
                material="src:#texture-box"
                color="green"
                position="-1.5 0 0"
@@ -122,13 +131,7 @@
                  height="400"></a-plane>
     </a-entity>
 
-    <a-entity>
-        <a-box static-body
-               id="tape"
-               src="#texture-tape"
-               position="3.5 0 0"
-               scale="6 2 1"></a-box>
-    </a-entity>
+    <a-entity id="tape" position="0.4 0.95 0"></a-entity>
 </a-scene>
 </body>
 </html>
