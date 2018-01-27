@@ -63,7 +63,7 @@
     </a-assets>
 
 
-    <a-camera id="camera-main" position="0 -0.05 0.80" rotation="-24.866 0.344 0">
+    <a-camera id="camera-main" position="-0.05 -0.05 0.80" rotation="-34.091 -0.057" wasd-controls-enabled="false" user-height="1.8">
         <a-cursor id="cursor-main" raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;">
             <a-sphere id="test-sphere-cursor"
                     position="0 0 1"
@@ -93,10 +93,10 @@
                    color="grey"></a-box>
         </a-entity>
         <a-entity id="shop-windows" position="0 1.5 0">
-            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 -7.75" scale="19.8 2 0.05"></a-box>
-            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="-4.8 0.5 0"     scale="0.05 2 15.55"></a-box>
-            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 7.75"  scale="19.8 2 0.05"></a-box>
-            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="15   0.5 0"     scale="0.05 2 15.55"></a-box>
+            <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 -7.75" scale="19.8 2 0.05"></a-box>
+            <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="-4.8 0.5 0"     scale="0.05 2 15.55"></a-box>
+            <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 7.75"  scale="19.8 2 0.05"></a-box>
+            <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="15   0.5 0"     scale="0.05 2 15.55"></a-box>
         </a-entity>
 <!--
         <a-entity id="shop-roof" position="0 3 0">
@@ -252,14 +252,25 @@
                scale="6 2 1"></a-box>
     </a-entity>
 
-    <a-entity obj-model="mtl: #model-car-violet-mtl; obj: #model-car-violet-obj" position="11.762 0.004 -10.938" scale="1.4 1.4 1.4"></a-entity>
-    <a-entity obj-model="obj: #model-car-silver-obj; mtl: #model-car-silver-mtl" position="9.073 0.004 -11.38" rotation="0 11.66 0" scale="1.6 1.6 1.6"></a-entity>
-    <a-entity obj-model="mtl: #model-car-red-mtl; obj: #model-car-red-obj" position="6.087 0.004 -11.38" rotation="0 -18.65 0" scale="1.4 1.4 1.4"></a-entity>
-    <a-entity obj-model="mtl: #model-car-orange-mtl; obj: #model-car-orange-obj" position="2.947 0.004 -11.38" scale="1.5 1.5 1.5"></a-entity>
-    <a-entity obj-model="mtl: #model-car-green-mtl; obj: #model-car-green-obj" position="0.194 0.004 -11.38" scale="1.4 1.4 1.4"></a-entity>
-    <a-entity obj-model="obj: #model-car-citrus-obj; mtl: #model-car-citrus-mtl" position="-2.246 0.004 -11.988" rotation="0 -11.13 0" scale="1.4 1.4 1.4"></a-entity>
-    <a-entity obj-model="obj: #model-car-blue-obj; mtl: #model-car-blue-mtl" position="-4.476 0.004 -12.546" rotation="0 6.68 0" scale="1.7 1.7 1.7"></a-entity>
+    <a-entity id="cars-1" scale="1.2 1.2 1.2" position="1.502 0 1.977">
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-violet.mtl;obj:/assets/models/cars/car-normal-violet.obj" position="9.532 0.004 -10.938" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-silver.mtl;obj:/assets/models/cars/car-normal-silver.obj" position="7.058 0.004 -11.38" rotation="0 11.66 0" scale="1.6 1.6 1.6"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-red.mtl;obj:/assets/models/cars/car-normal-red.obj" position="4.708 0.004 -11.38" rotation="0 -170.74142294898533 0" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-orange.mtl;obj:/assets/models/cars/car-normal-orange.obj" position="-0.332 1.684 -11.235" scale="1.5 1.5 1.5" rotation="26.871720591635608 -98.72062810104084 -175.382381089545"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-green.mtl;obj:/assets/models/cars/car-normal-green.obj" position="2.571 0.004 -11.38" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-citrus.mtl;obj:/assets/models/cars/car-normal-citrus.obj" position="-2.58 0.004 -11.148" rotation="0 163.75133784838928 0" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-blue.mtl;obj:/assets/models/cars/car-normal-blue.obj" position="-4.476 0.004 -11.368" rotation="0 -173.83539504269174 0" scale="1.7 1.7 1.7"></a-entity>
+    </a-entity>
 
+    <a-entity id="cars-2" position="5.537 0 5.195" rotation="0 88.00631733209445 0" scale="1.2 1.2 1.2">
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-violet.mtl;obj:/assets/models/cars/car-normal-violet.obj" position="11.762 0.004 -10.938" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-silver.mtl;obj:/assets/models/cars/car-normal-silver.obj" position="9.622 0.004 -11.135" rotation="0 -178.13257850617293 0" scale="1.6 1.6 1.6"></a-entity>
+
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-orange.mtl;obj:/assets/models/cars/car-normal-orange.obj" position="6.662 0.004 -10.575" scale="1.5 1.5 1.5" rotation="0.057295779513082325 91.61595144141863 0.7448451336700702"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-green.mtl;obj:/assets/models/cars/car-normal-green.obj" position="1.659 0.004 -10.821" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-citrus.mtl;obj:/assets/models/cars/car-normal-citrus.obj" position="3.437 0.877 -10.615" rotation="6.531718864491385 163.63674628936312 95.5693602278213" scale="1.4 1.4 1.4"></a-entity>
+        <a-entity obj-model="mtl:/assets/models/cars/car-normal-blue.mtl;obj:/assets/models/cars/car-normal-blue.obj" position="-0.67 0.004 -11.161" rotation="0 6.68 0" scale="1.7 1.7 1.7"></a-entity>
+    </a-entity>
 </a-scene>
 </body>
 </html>
