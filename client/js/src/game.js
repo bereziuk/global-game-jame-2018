@@ -1,6 +1,7 @@
 export class Game {
     constructor() {
         this.scannedProducts = 0;
+        this.packedProducts = 0;
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -14,7 +15,11 @@ export class Game {
 
     scanProduct(produt) {
         this.scannedProducts++;
-        console.log(this.scannedProducts);
+        document.querySelector('#score-panel .products-scanned').innerHTML = this.scannedProducts;
+    };
+    packProduct(produt) {
+        this.packedProducts++;
+        document.querySelector('#score-panel .products-packed').innerHTML = this.packedProducts;
     };
 
 }

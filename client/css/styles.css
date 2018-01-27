@@ -1,5 +1,5 @@
 ﻿body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, Arial, Helvetica, sans-serif;
 }
 
 .hud {
@@ -14,4 +14,14 @@
 
 a-scene {
     z-index: 0;
+}
+#score-panel {
+    font-size: 120%;
+    position: fixed;
+    top: 0;
+    left: 30%;
+    padding: 5px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
 }
