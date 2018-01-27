@@ -22,7 +22,7 @@
 <body>
 <div class="hud">Cashier Simulator VR</div>
 
-<a-scene id="scene-main" physics="debug: true" scene-main>
+<a-scene id="scene-main" physics="debug: false" scene-main>
     <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
         <a-plane static-body
                  position="0 -0.1 -4"
@@ -37,16 +37,6 @@
               position="1 1.15 -0.15"
               radius="0.15"
               color="#EF2D5E"></a-sphere>
-
-    <a-box click-drag
-            dynamic-body
-            test-sphere
-            id="test-sphere"
-            rotation="0 45"
-            mass="0.1"
-            position="2 1.45 -0.15"
-            scale="0.1 0.1 0.1"
-            color="#EF2D5E"></a-box>
 
     <a-assets>
         <!-- SHOP CHECKOUT -->
@@ -71,8 +61,18 @@
         <img id="texture-tape" src="/assets/textures/tape.png">
     </a-assets>
 
-    <a-camera id="camera-main" position="-0.05 -0.05 0.80" rotation="-34.091 -0.057" wasd-controls-enabled="true" user-height="1.8">
-        <a-cursor id="cursor-main" raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;">
+    <a-camera
+        id="camera-main"
+        position="-0.05 -0.05 0.80"
+        rotation="-34.091 -0.057"
+        wasd-controls-enabled="true"
+        user-height="1.8">
+        <a-cursor
+            id="cursor-main"
+            raycaster="objects: .clickable"
+            color="#fff"
+            opacity="0.75"
+            material="color: #0ff;">
             <!--<a-sphere id="test-sphere-cursor"-->
                     <!--position="0 0 1"-->
                       <!--opacity="1"-->
@@ -81,7 +81,14 @@
         </a-cursor>
     </a-camera>
 
-    <a-entity id="tape" position="0.4 0.95 0"></a-entity>
+    <a-entity id="tape" position="1.2 1 -0.1">
+        <a-box position="0 0 0.125" id="tape-box" static-body scale="1.5 0.05 0.92" material="src:#texture-tape; repeat: 4 3;"></a-box>
+        <!-- <a-animation attribute="position"
+            dur="10000"
+            fill="0 0.95 0"
+            to="100 0.95 0"
+            repeat="indefinite"></a-animation> -->
+    </a-entity>
 
     <a-entity id="shop" position="0 0 -1.25">
         <a-entity id="shop-down-wall">
@@ -186,6 +193,7 @@
                   scale="0.25 2 0.5"
                   visible="false"
                   geometry="primitive:box;radius:1.25"></a-sphere>
+
         <a-sphere static-body
                   position="0.25 0 0"
                   material="src:#texture-box"
