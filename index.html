@@ -23,6 +23,9 @@
 <div class="hud">Cashier Simulator VR</div>
 
 <a-scene id="scene-main" physics="debug: true" scene-main>
+
+
+
     <a-sphere click-drag
               dynamic-body
               id="test-sphere"
@@ -31,6 +34,7 @@
               color="#EF2D5E"></a-sphere>
 
     <a-assets>
+        <a-asset-item id="model-shop-checkout" src="/assets/models/shop-checkout/shop-checkout.dae"></a-asset-item>
         <img id="texture-ball" src="/assets/textures/ball.png">
         <img id="texture-tape" src="/assets/textures/tape.png">
     </a-assets>
@@ -45,6 +49,39 @@
                       color="#EF2D5E"></a-sphere>
         </a-cursor>
     </a-camera>
+
+    <a-entity id="shop">
+        <a-entity id="shop-down-wall">
+            <a-box material="src:#texture-box"
+                   position="5.12 0.500 -7.75"
+                   scale="19.862 1.000 0.200"
+                   color="grey"></a-box>
+            <a-box material="src:#texture-box"
+                   position="-4.8 0.5 0"
+                   scale="0.200 1.000 15.7"
+                   color="grey"></a-box>
+            <a-box material="src:#texture-box"
+                   position="5.12 0.500 7.75"
+                   scale="19.862 1.000 0.200"
+                   color="grey"></a-box>
+            <a-box material="src:#texture-box"
+                   position="15 0.5 0"
+                   scale="0.200 1.000 15.7"
+                   color="grey"></a-box>
+        </a-entity>
+        <a-entity id="shop-windows" position="0 1.5 0">
+            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 -7.75" scale="19.8 2 0.05"></a-box>
+            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="-4.8 0.5 0"     scale="0.05 2 15.55"></a-box>
+            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 7.75"  scale="19.8 2 0.05"></a-box>
+            <a-box material="src:#texture-box" opacity="0.3" color="blue" position="15   0.5 0"     scale="0.05 2 15.55"></a-box>
+        </a-entity>
+        <a-entity id="shop-roof" position="0 3 0">
+            <a-box material="src:#texture-box" color="grey" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
+        </a-entity>
+        <a-entity id="shop-floor" position="0 0 0">
+            <a-box material="src:#texture-box" color="yellow" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
+        </a-entity>
+    </a-entity>
 
     <a-entity id="packing-zone" position="0.5 0 0.5">
         <a-box static-body
@@ -126,6 +163,40 @@
                  width="400"
                  height="400"></a-plane>
     </a-entity>
+
+    <a-entity id="basket-1" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+    </a-entity>
+
+    <a-entity id="basket-2" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0.4">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+    </a-entity>
+
+    <a-entity id="basket-3" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 0.8">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+    </a-entity>
+
+    <a-entity id="basket-4" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.074 1.2">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" name="podstawka"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+    </a-entity>
+
+    <a-entity collada-model="#model-shop-checkout" position="0 -0.001 -2.262" scale="1.2 1.2 1.2"></a-entity>
 
     <a-entity>
         <a-box static-body
