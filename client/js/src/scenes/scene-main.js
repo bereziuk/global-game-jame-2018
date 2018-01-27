@@ -2,6 +2,7 @@ export function registerSceneMain() {
     AFRAME.registerComponent('scene-main', {
         init: function () {
             let draggableElements = document.querySelector('[click-drag]');
+            let isItemActive = false;
 
             draggableElements.addEventListener("dragstart", () => {
                 draggableElements.components['dynamic-body'].pause();
@@ -27,29 +28,32 @@ export function registerSceneMain() {
             });
 
             document.addEventListener("keydown", (event) => {
-                // SPACE
-                if (event.keyCode === 32) {
+                if (isItemActive) {
+                    isItemActive = false;
                     let shopItem = document.getElementById("test-sphere");
-                    let shopItemAtCursor = document.getElementById("test-sphere-cursor");
                     let mainCursor = document.getElementById("cursor-main");
                     let mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
+                    let mainScene = document.getElementById("scene-main");
 
                     shopItem.pause();
                     shopItem.setAttribute('position', mainCursorOrigin);
-                    shopItemAtCursor.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, 1));
+
+                    mainScene.appendChild(shopItem);
+                    shopItem.setAttribute('dynamic-body', {
+                        shape: 'auto',
+                        mass: 1.5,
+                        linearDamping: 0.005
+                    });
                     shopItem.play();
-
-                    return;
-                }
-
-                // ENTER
-                if (event.keyCode === 13) {
+                } else {
+                    isItemActive = true;
                     let shopItem = document.getElementById("test-sphere");
-                    let shopItemAtCursor = document.getElementById("test-sphere-cursor");
+                    let mainCursor = document.getElementById("cursor-main");
 
                     shopItem.pause();
-                    shopItem.setAttribute("position", new window.AFRAME.THREE.Vector3(0, -10, 0));
-                    shopItemAtCursor.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
+                    shopItem.removeAttribute('dynamic-body');
+                    shopItem.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
+                    mainCursor.appendChild(shopItem);
                     shopItem.play();
                 }
             });
