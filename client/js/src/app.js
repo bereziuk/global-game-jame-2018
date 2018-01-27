@@ -3,6 +3,7 @@ import {registerSceneMain} from "./scenes/scene-main";
 import { setTimeout } from "timers";
 
 $(document).ready(() => {
+  alert(1);
   generateTape();
   registerClickDragComponent();
   registerSceneMain();

@@ -2,6 +2,7 @@ export function registerSceneMain() {
     AFRAME.registerComponent('scene-main', {
         init: function () {
             let draggableElements = document.querySelector('[click-drag]');
+            let isItemActive = false;
 
             draggableElements.addEventListener("dragstart", () => {
                 draggableElements.components['dynamic-body'].pause();
@@ -25,36 +26,41 @@ export function registerSceneMain() {
                 draggableElements.components['dynamic-body'].play();
                 draggableElements.body.velocity.set(rotatedVelocity.x, rotatedVelocity.y, rotatedVelocity.z);
             });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.keyCode !== 32) {
+                    return;
+                }
+
+                if (isItemActive) {
+                    isItemActive = false;
+                    let shopItem = document.getElementById("test-sphere");
+                    let mainCursor = document.getElementById("cursor-main");
+                    let mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
+                    let mainScene = document.getElementById("scene-main");
+
+                    shopItem.pause();
+                    shopItem.setAttribute('position', mainCursorOrigin);
+
+                    mainScene.appendChild(shopItem);
+                    shopItem.setAttribute('dynamic-body', {
+                        shape: 'auto',
+                        mass: 1.5,
+                        linearDamping: 0.005
+                    });
+                    shopItem.play();
+                } else {
+                    isItemActive = true;
+                    let shopItem = document.getElementById("test-sphere");
+                    let mainCursor = document.getElementById("cursor-main");
+
+                    shopItem.pause();
+                    shopItem.removeAttribute('dynamic-body');
+                    shopItem.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
+                    mainCursor.appendChild(shopItem);
+                    shopItem.play();
+                }
+            });
         }
     });
-
-    // document.addEventListener("keydown", () => {
-    //     console.log("keydown");
-    // });
-
-    // AFRAME.registerComponent('test-sphere', {
-    //     init: function () {
-    //         console.log("!!!");
-    //
-    //         let test123 = document.getElementById("test-sphere");
-    //
-    //         test123.addEventListener('click', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("click");
-    //             test123.setAttribute('color', 'orange');
-    //         });
-    //
-    //         test123.addEventListener('mouseenter', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("mouseenter");
-    //             test123.setAttribute('color', '#24CAFF');
-    //         });
-    //
-    //         test123.addEventListener('mousedown', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("mousedown");
-    //             test123.setAttribute('color', '#EF2D5E');
-    //         });
-    //     }
-    // });
 }
