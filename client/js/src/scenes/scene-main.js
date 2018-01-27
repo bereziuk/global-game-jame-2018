@@ -1,7 +1,7 @@
 export function registerSceneMain() {
     AFRAME.registerComponent('scene-main', {
         init: function () {
-            let draggableElements = document.getElementById("test-sphere");
+            let draggableElements = document.querySelector('[click-drag]');
 
             draggableElements.addEventListener("dragstart", () => {
                 draggableElements.components['dynamic-body'].pause();
@@ -28,29 +28,33 @@ export function registerSceneMain() {
         }
     });
 
-    AFRAME.registerComponent('test-sphere', {
-        init: function () {
-            console.log("!!!");
+    // document.addEventListener("keydown", () => {
+    //     console.log("keydown");
+    // });
 
-            let test123 = document.getElementById("test-sphere");
-
-            test123.addEventListener('click', function () {
-                // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-                console.log("click");
-                test123.setAttribute('color', 'orange');
-            });
-
-            test123.addEventListener('mouseenter', function () {
-                // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-                console.log("mouseenter");
-                test123.setAttribute('color', '#24CAFF');
-            });
-
-            test123.addEventListener('mousedown', function () {
-                // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-                console.log("mousedown");
-                test123.setAttribute('color', '#EF2D5E');
-            });
-        }
-    });
+    // AFRAME.registerComponent('test-sphere', {
+    //     init: function () {
+    //         console.log("!!!");
+    //
+    //         let test123 = document.getElementById("test-sphere");
+    //
+    //         test123.addEventListener('click', function () {
+    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
+    //             console.log("click");
+    //             test123.setAttribute('color', 'orange');
+    //         });
+    //
+    //         test123.addEventListener('mouseenter', function () {
+    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
+    //             console.log("mouseenter");
+    //             test123.setAttribute('color', '#24CAFF');
+    //         });
+    //
+    //         test123.addEventListener('mousedown', function () {
+    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
+    //             console.log("mousedown");
+    //             test123.setAttribute('color', '#EF2D5E');
+    //         });
+    //     }
+    // });
 }
