@@ -16,6 +16,7 @@ export function registerCheckoutArea() {
                 }
 
                 game.scanProduct(draggedProduct);
+                beep();
                 draggedProduct.setAttribute(PRODUCT_SCANNED, true);
             });
 
@@ -24,4 +25,9 @@ export function registerCheckoutArea() {
             // });
         },
     });
+}
+
+function beep() {
+    var snd = new Audio("/assets/sounds/product-scanned.mp3");
+    snd.play();
 }
