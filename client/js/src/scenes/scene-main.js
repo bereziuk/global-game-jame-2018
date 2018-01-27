@@ -25,36 +25,34 @@ export function registerSceneMain() {
                 draggableElements.components['dynamic-body'].play();
                 draggableElements.body.velocity.set(rotatedVelocity.x, rotatedVelocity.y, rotatedVelocity.z);
             });
+
+            document.addEventListener("keydown", (event) => {
+                // SPACE
+                if (event.keyCode === 32) {
+                    let shopItem = document.getElementById("test-sphere");
+                    let shopItemAtCursor = document.getElementById("test-sphere-cursor");
+                    let mainCursor = document.getElementById("cursor-main");
+                    let mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
+
+                    shopItem.pause();
+                    shopItem.setAttribute('position', mainCursorOrigin);
+                    shopItemAtCursor.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, 1));
+                    shopItem.play();
+
+                    return;
+                }
+
+                // ENTER
+                if (event.keyCode === 13) {
+                    let shopItem = document.getElementById("test-sphere");
+                    let shopItemAtCursor = document.getElementById("test-sphere-cursor");
+
+                    shopItem.pause();
+                    shopItem.setAttribute("position", new window.AFRAME.THREE.Vector3(0, -10, 0));
+                    shopItemAtCursor.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
+                    shopItem.play();
+                }
+            });
         }
     });
-
-    // document.addEventListener("keydown", () => {
-    //     console.log("keydown");
-    // });
-
-    // AFRAME.registerComponent('test-sphere', {
-    //     init: function () {
-    //         console.log("!!!");
-    //
-    //         let test123 = document.getElementById("test-sphere");
-    //
-    //         test123.addEventListener('click', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("click");
-    //             test123.setAttribute('color', 'orange');
-    //         });
-    //
-    //         test123.addEventListener('mouseenter', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("mouseenter");
-    //             test123.setAttribute('color', '#24CAFF');
-    //         });
-    //
-    //         test123.addEventListener('mousedown', function () {
-    //             // test123.setAttribute('scale', {x: 2, y: 1, z: 2});
-    //             console.log("mousedown");
-    //             test123.setAttribute('color', '#EF2D5E');
-    //         });
-    //     }
-    // });
 }
