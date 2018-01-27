@@ -22,7 +22,7 @@
 <body>
 <div class="hud">Cashier Simulator VR</div>
 
-<a-scene id="scene-main" physics="debug: true" scene-main>
+<a-scene id="scene-main" physics="debug: true" scene-main physics-world="gravity: 0 -9.8 0">
 
     <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
         <a-plane static-body
@@ -32,19 +32,17 @@
                  height="400"></a-plane>
     </a-entity>
 
-    <a-sphere click-drag
+    <a-sphere shadow
               dynamic-body
-              shop-item-1
-              id="shop-item-1"
+              shop-product
               class="clickable"
               position="1 1.15 -0.15"
               radius="0.05"
               color="#EF2D5E"></a-sphere>
 
-    <a-sphere click-drag
+    <a-sphere shadow
               dynamic-body
-              shop-item-2
-              id="shop-item-2"
+              shop-product
               class="clickable"
               position="1.5 1.15 -0.15"
               radius="0.05"
@@ -96,22 +94,10 @@
 
     <a-entity id="shop" position="0 0 -1.25">
         <a-entity id="shop-down-wall">
-            <a-box material="src:#texture-box"
-                   position="5.12 0.500 -7.75"
-                   scale="19.862 1.000 0.200"
-                   color="grey"></a-box>
-            <a-box material="src:#texture-box"
-                   position="-4.8 0.5 0"
-                   scale="0.200 1.000 15.7"
-                   color="grey"></a-box>
-            <a-box material="src:#texture-box"
-                   position="5.12 0.500 7.75"
-                   scale="19.862 1.000 0.200"
-                   color="grey"></a-box>
-            <a-box material="src:#texture-box"
-                   position="15 0.5 0"
-                   scale="0.200 1.000 15.7"
-                   color="grey"></a-box>
+            <a-box static-body material="src:#texture-box" position="5.12 0.500 -7.75" scale="19.862 1.000 0.200" color="grey"></a-box>
+            <a-box static-body material="src:#texture-box" position="-4.8 0.5 0" scale="0.200 1.000 15.7" color="grey"></a-box>
+            <a-box static-body material="src:#texture-box" position="5.12 0.500 7.75" scale="19.862 1.000 0.200" color="grey"></a-box>
+            <a-box static-body material="src:#texture-box" position="15 0.5 0" scale="0.200 1.000 15.7" color="grey"></a-box>
         </a-entity>
         <a-entity id="shop-windows" position="0 1.5 0">
             <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 -7.75" scale="19.8 2 0.05"></a-box>
@@ -124,7 +110,7 @@
             <a-box material="src:#texture-box" color="grey" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
         </a-entity>
 -->
-        <a-entity id="shop-floor" position="0 0 0">
+        <a-entity id="shop-floor" position="0 0 0" static-body>
             <a-box material="src:#texture-box" color="yellow" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
         </a-entity>
     </a-entity>
@@ -209,18 +195,16 @@
                   geometry="primitive:box;radius:1.25"></a-sphere>
     </a-entity>
 
-    <a-entity id="kasownik" position="0 0 0">
-        <a-sphere static-body
-                  position="0 0 0"
-                  material="src:#texture-box"
-                  class="clickable"
-                  rotation="0 0 0"
-                  scale="1 2 1"
-                  visible="false"
-                  geometry="primitive:box;radius:1.25"></a-sphere>
+    <a-entity position="0 0 0">
+            <a-sphere static-body
+                      position="0 0 0"
+                      material="src:#texture-box"
+                      scale="1 2 1"
+                      visible="false"
+                      geometry="primitive:box;radius:1.25"></a-sphere>
 
-        <a-sphere static-body
-                  kasownik
+            <a-sphere
+                  checkout-area
                   position="-0.1 1.15 0"
                   material="src:#texture-box"
                   class="clickable"
@@ -230,8 +214,6 @@
                   visible="true"
                   opacity="0.5"
                   geometry="primitive:box;radius:1.25"></a-sphere>
-
-
     </a-entity>
 
     <a-entity id="basket-1" color="purple" scale="0.5 0.3 0.3" position="-1 1.1 0">
