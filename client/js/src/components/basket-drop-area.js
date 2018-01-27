@@ -1,4 +1,5 @@
 import {game} from "../app";
+import {PRODUCT_PACKED, PRODUCT_SCANNED} from "../game";
 
 export function registerBasketDropArea() {
     AFRAME.registerComponent('basket-drop-area', {
@@ -10,14 +11,18 @@ export function registerBasketDropArea() {
 
                 const product = e.detail.body.el;
 
-                if (product.hasAttribute("already-packed")) {
+                if (product.hasAttribute(PRODUCT_PACKED)) {
+                    return;
+                }
+
+                if (!product.hasAttribute(PRODUCT_SCANNED)) {
                     return;
                 }
 
                 game.packProduct(product);
 
                 product.removeAttribute('shop-product');
-                product.setAttribute('already-packed');
+                product.setAttribute(PRODUCT_PACKED);
             });
 
         }

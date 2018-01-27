@@ -1,3 +1,6 @@
+export const PRODUCT_SCANNED = 'already-scanned';
+export const PRODUCT_PACKED = 'already-packed';
+
 export class Game {
     constructor() {
         this.scannedProducts = 0;
@@ -9,6 +12,7 @@ export class Game {
     clearHoveredItemIfNotDragged() { if (this.hoveredItem !== this.draggedProduct) { this.hoveredItem = undefined; }}
     hasHoveredItem() { return !!this.hoveredItem; }
 
+    getDraggedProduct() { return this.draggedProduct; }
     doWeDragAnyProduct() { return !!this.draggedProduct; }
     dropDraggedProduct() { this.draggedProduct = undefined; this.hoveredItem = undefined }
     setDraggedProduct(product) { this.draggedProduct = product; }
