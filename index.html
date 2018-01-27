@@ -25,6 +25,7 @@
 <a-scene id="scene-main" physics="debug: true" scene-main>
     <a-sphere click-drag
               dynamic-body
+              test-sphere
               id="test-sphere"
               position="1 1.15 -0.15"
               radius="0.15"
@@ -37,7 +38,7 @@
 
 
     <a-camera id="camera-main" position="0 -0.05 0.80" rotation="-24.866 0.344 0">
-        <a-cursor raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;"></a-cursor>
+        <a-cursor color="#fff" opacity="0.75" material="color: #0ff;"></a-cursor>
     </a-camera>
 
     <a-entity id="packing-zone" position="0.5 0 0.5">
@@ -77,6 +78,17 @@
                   rotation="0 0 0"
                   scale="1 2 1"
                   visible="true"
+                  geometry="primitive:box;radius:1.25"></a-sphere>
+
+        <a-sphere static-body
+                  position="0 1.25 0"
+                  material="src:#texture-box"
+                  class="clickable"
+                  rotation="0 0 0"
+                  scale="0.5 0.15 0.5"
+                  color="orange"
+                  visible="true"
+                  opacity="0.5"
                   geometry="primitive:box;radius:1.25"></a-sphere>
 
         <a-sphere static-body
