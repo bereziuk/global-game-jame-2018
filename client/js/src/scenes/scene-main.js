@@ -69,6 +69,14 @@ export function registerSceneMain() {
                     shopItem.play();
                 }
             });
+
+
+            var playerEl = document.querySelector('[basket-drop-area]');
+            playerEl.addEventListener('collide', function (e) {
+                console.log('Player has collided with body #', e.detail);
+                e.detail.target.el;  // Original entity (playerEl).
+                e.detail.body.el;    // Other entity, which playerEl touched.
+            });
         }
     });
 
