@@ -1,6 +1,10 @@
 export function registerSceneMain() {
     AFRAME.registerComponent('scene-main', {
         init: function () {
+
+            window.hoveredShopItemId = null;
+            window.isHoveredShopItem = false;
+
             let draggableElements = document.querySelector('[click-drag]');
             let isItemActive = false;
 
@@ -34,7 +38,7 @@ export function registerSceneMain() {
 
                 if (isItemActive) {
                     isItemActive = false;
-                    let shopItem = document.getElementById("test-sphere");
+                    let shopItem = document.getElementById(window.hoveredShopItemId);
                     let mainCursor = document.getElementById("cursor-main");
                     let mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
                     let mainScene = document.getElementById("scene-main");
@@ -50,8 +54,12 @@ export function registerSceneMain() {
                     });
                     shopItem.play();
                 } else {
+                    if (!window.isHoveredShopItem) {
+                        return;
+                    }
+
                     isItemActive = true;
-                    let shopItem = document.getElementById("test-sphere");
+                    let shopItem = document.getElementById(window.hoveredShopItemId);
                     let mainCursor = document.getElementById("cursor-main");
 
                     shopItem.pause();
@@ -61,6 +69,40 @@ export function registerSceneMain() {
                     shopItem.play();
                 }
             });
+        }
+    });
+
+
+    // TODO: register components with unique names and IDs after items are generated!
+    AFRAME.registerComponent('shop-item-1', {
+        init: function () {
+            let el = this.el;
+
+            el.addEventListener('mouseenter', function () {
+                window.hoveredShopItemId = el.id;
+                window.isHoveredShopItem = true;
+            });
+
+            el.addEventListener('mouseleave', function () {
+                window.isHoveredShopItem = false;
+            });
+
+        }
+    });
+
+    AFRAME.registerComponent('shop-item-2', {
+        init: function () {
+            let el = this.el;
+
+            el.addEventListener('mouseenter', function () {
+                window.hoveredShopItemId = el.id;
+                window.isHoveredShopItem = true;
+            });
+
+            el.addEventListener('mouseleave', function () {
+                window.isHoveredShopItem = false;
+            });
+
         }
     });
 }
