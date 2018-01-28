@@ -62,7 +62,7 @@ export class Game {
         product.setAttribute("dynamic-body", { mass: 1 });
         product.setAttribute("product-type", "" + productDefinition.type + "");
         product.setAttribute("class", "clickable");
-        product.setAttribute("position", "1 1.55 -0.15");
+        product.setAttribute("position", "1 1.35 -0.15");
         product.setAttribute("shop-product", "true");
 
         return product;
