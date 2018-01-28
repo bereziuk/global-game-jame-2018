@@ -5,14 +5,17 @@ export const PRODUCT_PACKED = 'already-packed';
 
 export class Game {
     constructor() {
+        this.newProductIndex = 0;
         this.products = 0;
         this.scannedProducts = 0;
         this.packedProducts = 0;
         this.brokenProducts = 0;
 
-        setTimeout(() => {
-            this.generateNewProduct(10000);
-        }, 2000);
+        setTimeout(() => this.startNewGame());
+    }
+
+    startNewGame() {
+        this.generateNewProduct();
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -39,32 +42,27 @@ export class Game {
         document.querySelector('#score-panel .products-packed').innerHTML = this.packedProducts;
     }
 
-    generateNewProduct(timeout) {
-        console.log("new product", timeout);
+    generateNewProduct() {
         const tapeEntity = document.getElementById("tape-wrapper");
-        const newProduct = this.getNewProduct();
 
-        tapeEntity.appendChild(newProduct);
-
-        const maxTimeout = 5000;
-        const timeoutStep = 500;
-        setTimeout(() => {
-            if (timeout > maxTimeout) {
-                this.generateNewProduct(timeout - timeoutStep);
-            } else {
-                this.generateNewProduct(maxTimeout);
-            }
-        }, timeout);
+        tapeEntity.appendChild(this.getNewProduct());
     }
 
     getNewProduct() {
-        const randomProductIndex = Math.floor(Math.random() * PRODUCTS.length);
-        const productDefinition = PRODUCTS[randomProductIndex];
+        if (this.newProductIndex >= PRODUCTS.length - 1) {
+            this.newProductIndex = 0
+        } else {
+            this.newProductIndex++
+        }
+        let productIndex = this.newProductIndex;
+
+        const productDefinition = PRODUCTS[productIndex];
         const product = document.createElement("a-" + productDefinition.shape);
 
         product.setAttribute("shop-product", "true");
+        product.setAttribute("product-type", "" + productDefinition.type + "");
         product.setAttribute("class", "clickable");
-        product.setAttribute("position", productDefinition.position);
+        product.setAttribute("position", "1 1.55 -0.15");
         product.setAttribute("dynamic-body", { mass: 1 });
         product.setAttribute("material", productDefinition.material);
 
