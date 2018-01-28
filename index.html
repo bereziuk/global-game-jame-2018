@@ -27,7 +27,7 @@
     <span>Packed: <strong class="products-packed">0</strong></span>
     <span>Broken: <strong class="products-broken">0</strong></span>
 </div>
-<a-scene id="scene-main" physics="debug: true" scene-main physics-world="gravity: 0 -9.8 0">
+<a-scene id="scene-main" physics="debug: false" scene-main physics-world="gravity: 0 -9.8 0">
 
     <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
         <a-plane static-body
@@ -275,7 +275,7 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45"></a-box>
     </a-entity>
 
-    <a-entity id="tapewrapper">
+    <a-entity id="tape-wrapper">
         <a-box static-body
                id="tape"
                src="#texture-tape"

@@ -10,8 +10,8 @@ export class Game {
         this.packedProducts = 0;
         this.brokenProducts = 0;
 
-        setInterval(() => {
-            this.generateNewProduct();
+        setTimeout(() => {
+            this.generateNewProduct(10000);
         }, 2000);
     }
 
@@ -39,11 +39,16 @@ export class Game {
         document.querySelector('#score-panel .products-packed').innerHTML = this.packedProducts;
     }
 
-    generateNewProduct() {
-        const tapeEntity = document.getElementById("tapewrapper");
+    generateNewProduct(timeout) {
+        console.log("new product", timeout);
+        const tapeEntity = document.getElementById("tape-wrapper");
         const newProduct = this.getNewProduct();
 
         tapeEntity.appendChild(newProduct);
+
+        setTimeout(() => {
+            this.generateNewProduct(timeout - 500)
+        }, timeout);
     }
 
     getNewProduct() {
