@@ -16,7 +16,6 @@ export function registerShopProduct() {
             el.addEventListener('mouseleave', () => {
                 game.clearHoveredItemIfNotDragged();
             });
-
         }
     });
 }

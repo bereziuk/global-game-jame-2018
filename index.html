@@ -104,6 +104,8 @@
         <img id="texture-onion" src="/assets/textures/onion.png">
         <img id="texture-orange" src="/assets/textures/orange.png">
         <img id="texture-cookies" src="/assets/textures/cookies.png">
+        <img id="texture-candy" src="/assets/textures/candy.png">
+        <img id="texture-apple" src="/assets/textures/apple.png">
     </a-assets>
 
 
@@ -193,7 +195,6 @@
 
     <a-entity id="packing-zone" position="0.5 0 0.5">
         <a-box static-body
-               id="tape"
                material="src:#texture-box"
                color="green"
                opacity="0"
@@ -276,7 +277,7 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45"></a-box>
     </a-entity>
 
-    <a-entity>
+    <a-entity id="tapewrapper">
         <a-box static-body
                id="tape"
                src="#texture-tape"
@@ -321,8 +322,11 @@
 
     <a-entity geometry="primitive: sphere" material="src: #texture-orange" position="1.227 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
-    <a-entity geometry="primitive: box" material="src: #texture-cookies" position="1.527 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+    <a-entity geometry="primitive: box" material="src: #texture-cookies" position="0.327 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
+    <a-entity geometry="primitive: box" material="src: #texture-candy" position="0.527 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-apple" position="0.427 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 </a-scene>
 </body>
 </html>
