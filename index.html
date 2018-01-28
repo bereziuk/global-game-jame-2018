@@ -34,7 +34,7 @@
     <a-sphere click-drag
               dynamic-body
               id="test-sphere"
-              position="1 1.15 -0.15"
+              position="0.5 1.15 -0.15"
               radius="0.15"
               color="#EF2D5E"></a-sphere>
 
@@ -82,7 +82,7 @@
     </a-camera>
 
     <a-entity id="tape" position="1.2 1 -0.1">
-        <a-box position="0 0 0.125" id="tape-box" static-body scale="1.5 0.05 0.92" material="src:#texture-tape; repeat: 4 3;"></a-box>
+        <a-box position="0 0 0.125" id="tape-box" static-body="friction: 0" scale="1.5 0.05 0.92" material="src:#texture-tape; repeat: 4 3;"></a-box>
         <!-- <a-animation attribute="position"
             dur="10000"
             fill="0 0.95 0"
