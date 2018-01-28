@@ -46,11 +46,13 @@ export class Game {
 
         tapeEntity.appendChild(newProduct);
 
+        const maxTimeout = 5000;
+        const timeoutStep = 500;
         setTimeout(() => {
-            if (timeout > 4000) {
-                this.generateNewProduct(timeout - 500);
+            if (timeout > maxTimeout) {
+                this.generateNewProduct(timeout - timeoutStep);
             } else {
-                this.generateNewProduct(4000);
+                this.generateNewProduct(maxTimeout);
             }
         }, timeout);
     }
