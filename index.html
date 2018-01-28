@@ -25,6 +25,7 @@
 <div id="score-panel">
     <span>Scanned: <strong class="products-scanned">0</strong></span>
     <span>Packed: <strong class="products-packed">0</strong></span>
+    <span>Broken: <strong class="products-broken">0</strong></span>
 </div>
 <a-scene id="scene-main" physics="debug: true" scene-main physics-world="gravity: 0 -9.8 0">
 
@@ -38,19 +39,27 @@
 
     <a-sphere shadow
               dynamic-body
-              shop-product
+              shop-product="fruit"
               class="clickable"
               position="1 1.15 -0.15"
+              radius="0.05"
+              color="green"></a-sphere>
+
+    <a-sphere shadow
+              dynamic-body
+              shop-product="other"
+              class="clickable"
+              position="1.5 1.15 -0.15"
               radius="0.05"
               color="#EF2D5E"></a-sphere>
 
     <a-sphere shadow
               dynamic-body
-              shop-product
+              shop-product="broken"
               class="clickable"
-              position="1.5 1.15 -0.15"
+              position="1.3 1.15 -0.15"
               radius="0.05"
-              color="#EF2D5E"></a-sphere>
+              color="black"></a-sphere>
 
     <a-assets>
         <!-- SHOP CHECKOUT -->
@@ -76,19 +85,25 @@
         <a-asset-item id="model-car-violet-mtl" src="/assets/models/cars/car-normal-violet.mtl"></a-asset-item>
 
         <!-- SHOP ITEMS -->
-        <a-asset-item id="model-apple-obj" src="/assets/models/products/apple/apple.obj"></a-asset-item>
+        <!-- <a-asset-item id="model-apple-obj" src="/assets/models/products/apple/apple.obj"></a-asset-item>
         <a-asset-item id="model-apple-mtl" src="/assets/models/products/apple/apple.mtl"></a-asset-item>
 
         <a-asset-item id="model-banana-obj" src="/assets/models/products/banana/banana.obj"></a-asset-item>
         <a-asset-item id="model-banana-mtl" src="/assets/models/products/banana/banana.mtl"></a-asset-item>
 
-        
+        <a-asset-item id="model-muffin-obj" src="/assets/models/products/muffin/muffin.obj"></a-asset-item>
+        <a-asset-item id="model-muffin-mtl" src="/assets/models/products/muffin/muffin.mtl"></a-asset-item>
+
         <a-asset-item id="model-cookies-obj" src="/assets/models/products/cookies/cookies.obj"></a-asset-item>
-        <a-asset-item id="model-cookies-mtl" src="/assets/models/products/cookies/cookies.mtl"></a-asset-item>
+        <a-asset-item id="model-cookies-mtl" src="/assets/models/products/cookies/cookies.mtl"></a-asset-item> -->
 
         <!-- TEXTURES -->
         <img id="texture-ball" src="/assets/textures/ball.png">
         <img id="texture-tape" src="/assets/textures/tape.png">
+        <img id="texture-tomato" src="/assets/textures/tomato.png">
+        <img id="texture-onion" src="/assets/textures/onion.png">
+        <img id="texture-orange" src="/assets/textures/orange.png">
+        <img id="texture-cookies" src="/assets/textures/cookies.png">
     </a-assets>
 
 
@@ -116,9 +131,11 @@
                 <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="5.12 0.5 7.75"  scale="19.8 2 0.05"></a-box>
                 <a-box static-body material="src:#texture-box" opacity="0.3" color="blue" position="15   0.5 0"     scale="0.05 2 15.55"></a-box>
             </a-entity>
+            <!--
             <a-entity id="shop-roof" position="0 3 0">
                 <a-box material="src:#texture-box" color="grey" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
             </a-entity>
+            -->
         <a-entity id="shop-floor" position="0 0 0" static-body>
             <a-box material="src:#texture-box" color="yellow" position="5.294 0 0" scale="20.952 0.153 16.669"></a-box>
         </a-entity>
@@ -127,26 +144,26 @@
     <!-- ACTIVE CHECKOUT -->
     <a-entity collada-model="#model-shop-checkout" position="-1.56 0 1.51" scale="1.35 1.2 2"></a-entity>
 
-    <!-- CHECKOUTS -->
+    <!-- CHECKOUTS
     <a-entity collada-model="#model-shop-checkout" position="-1.56 0 -2" scale="1.35 1.2 2"></a-entity>
     <a-entity collada-model="#model-shop-checkout" position="-1.56 0 5" scale="1.35 1.2 2"></a-entity>
     <a-entity collada-model="#model-shop-checkout" position="-1.56 0 -5.5" scale="1.35 1.2 2"></a-entity>
-
+-->
     <!-- TRASH -->
     <a-entity id="trash-1" position="-4.26 0 -8.26">
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 18; primitive: cylinder"
                color="grey"
                radius="0.3"
                height="0.6"
                position="0 0.3 0"></a-cylinder>
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 9; primitive: cylinder"
                color="grey"
                     radius="0.35"
                     height="0.05"
                position="0 0.6 0"></a-cylinder>
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 18; primitive: cylinder"
                radius="0.05"
                height="0.05"
@@ -154,19 +171,19 @@
                position="0 0.65 0"></a-cylinder>
     </a-entity>
     <a-entity id="trash-2" position="-4.26 0 5.88">
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 18; primitive: cylinder"
                color="grey"
                radius="0.3"
                height="0.6"
                position="0 0.3 0"></a-cylinder>
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 9; primitive: cylinder"
                color="grey"
                     radius="0.35"
                     height="0.05"
                position="0 0.6 0"></a-cylinder>
-        <a-cylinder static-body
+        <a-cylinder
                geometry="segmentsRadial: 18; primitive: cylinder"
                radius="0.05"
                height="0.05"
@@ -183,7 +200,7 @@
                position="-1.5 0 0"
                scale="1 2 2"></a-box>
     </a-entity>
-
+<!--
     <a-entity id="polka" position="0.625 0 0.75">
         <a-sphere static-body
                   position="0 0 0"
@@ -203,7 +220,7 @@
                   visible="false"
                   geometry="primitive:box;radius:1.25"></a-sphere>
     </a-entity>
-
+-->
     <a-entity position="0 0 0">
             <a-sphere static-body
                       position="0 0 0"
@@ -212,49 +229,51 @@
                       visible="false"
                       geometry="primitive:box;radius:1.25"></a-sphere>
 
+        <a-sphere
+                checkout-area="other"
+                position="-0.073 1.116 -0.285"
+                material="src:#texture-box"
+                class="clickable"
+                scale="0.325 0.184 0.010"
+                color="blue"
+                visible="true"
+                opacity="0.5"
+                geometry="primitive:box;radius:1.25"></a-sphere>
+
             <a-sphere
-                  checkout-area
-                  position="-0.1 1.15 0"
+                  checkout-area="fruit"
+                  position="-0.070 1.024 0.009"
                   material="src:#texture-box"
                   class="clickable"
-                  rotation="0 0 0"
-                  scale="0.5 0.15 0.5"
+                  scale="0.383 0.022 0.449"
                   color="orange"
                   visible="true"
                   opacity="0.5"
                   geometry="primitive:box;radius:1.25"></a-sphere>
     </a-entity>
 
-    <a-entity id="basket-1" color="purple" scale="0.5 0.3 0.3" position="-1 1.1 0">
-        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area></a-box>
+    <a-entity id="basket-1" color="purple" scale="0.6 0.3 0.5" position="-1.256 1.100 0.517">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area="other"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
     </a-entity>
 
-    <a-entity id="basket-2" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 0.4">
-        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area></a-box>
+    <a-entity id="basket-2" color="purple" scale="0.6 0.3 0.5" position="-1.256 1.100 1.168">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area="fruit"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
     </a-entity>
 
-    <a-entity id="basket-3" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 0.8">
-        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area></a-box>
-        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
-    </a-entity>
-
-    <a-entity id="basket-4" color="purple" scale="0.5 0.3 0.3" position="-1.294 1.1 1.2">
-        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.20 0" basket-drop-area></a-box>
-        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0 0 0" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
-        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+    <a-entity id="basket-3" color="black" scale="0.6 0.3 0.5" position="0.932 1.081 1.187" rotation="0 90 0" opacity="0.8">
+        <a-box static-body color="#8b4513" scale="0.9 0.05 0.9" position="0.45 -0.2 0" basket-drop-area="broken"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" ></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45"></a-box>
+        <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0"></a-box>
+        <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45"></a-box>
     </a-entity>
 
     <a-entity>
@@ -264,7 +283,7 @@
                position="3.5 0 0"
                scale="6 2 1"></a-box>
     </a-entity>
-
+<!--
     <a-entity id="cars-1" scale="1.2 1.2 1.2" position="1.502 0 1.977">
         <a-entity obj-model="mtl:/assets/models/cars/car-normal-violet.mtl;obj:/assets/models/cars/car-normal-violet.obj" position="9.532 0.004 -10.938" scale="1.4 1.4 1.4"></a-entity>
         <a-entity obj-model="mtl:/assets/models/cars/car-normal-silver.mtl;obj:/assets/models/cars/car-normal-silver.obj" position="7.058 0.004 -11.38" rotation="0 11.66 0" scale="1.6 1.6 1.6"></a-entity>
@@ -284,16 +303,25 @@
         <a-entity obj-model="mtl:/assets/models/cars/car-normal-citrus.mtl;obj:/assets/models/cars/car-normal-citrus.obj" position="3.437 0.877 -10.615" rotation="6.531718864491385 163.63674628936312 95.5693602278213" scale="1.4 1.4 1.4"></a-entity>
         <a-entity obj-model="mtl:/assets/models/cars/car-normal-blue.mtl;obj:/assets/models/cars/car-normal-blue.obj" position="-0.67 0.004 -11.161" rotation="0 6.68 0" scale="1.7 1.7 1.7"></a-entity>
     </a-entity>
+-->
 
+    <!-- <a-entity obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj" position="0.851 1.102 0.661" scale="0.05 0.05 0.05"></a-entity>
 
-    <a-entity obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj" position="0.851 1.102 0.661" scale="0.05 0.05 0.05"></a-entity>
-
-    <a-entity obj-model="mtl:/assets/models/products/apple/apple.mtl;obj:/assets/models/products/apple/apple.obj" position="1.013 1.166 1.034" scale="0.02 0.02 0.02"></a-entity>
+    <a-entity obj-model="mtl:/assets/models/products/apple/apple.mtl;obj:/assets/models/products/apple/apple.obj" position="1.013 1.166 1.034" scale="0.02 0.02 0.02"></a-entity> -->
 
     <a-entity obj-model="obj:#model-people-couple" position="0 0.078 -1.57" scale="0.013 0.013 0.013"></a-entity>
 
-    <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity>
+    <!-- <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity>
 
+    <a-entity obj-model="mtl:#model-muffin-mtl;obj:#model-muffin-obj" position="0.712 0.998 1.162" scale="0.08 0.08 0.08"></a-entity> -->
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-tomato" position="0.627 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-onion" position="0.927 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-orange" position="1.227 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: box" material="src: #texture-cookies" position="1.527 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
 </a-scene>
 </body>
