@@ -52,5 +52,3 @@ function createNewProduct(index, parent) {
 
   parent.appendChild(product);
 }
-
-
