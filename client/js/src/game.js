@@ -40,21 +40,10 @@ export class Game {
     }
 
     generateNewProduct(timeout) {
-        console.log("new product", timeout);
         const tapeEntity = document.getElementById("tape-wrapper");
         const newProduct = this.getNewProduct();
-
+        console.log(newProduct);
         tapeEntity.appendChild(newProduct);
-
-        const maxTimeout = 5000;
-        const timeoutStep = 500;
-        setTimeout(() => {
-            if (timeout > maxTimeout) {
-                this.generateNewProduct(timeout - timeoutStep);
-            } else {
-                this.generateNewProduct(maxTimeout);
-            }
-        }, timeout);
     }
 
     getNewProduct() {
@@ -62,7 +51,7 @@ export class Game {
         const productDefinition = PRODUCTS[randomProductIndex];
         const product = document.createElement("a-" + productDefinition.shape);
 
-        product.setAttribute("shop-product", "true");
+        product.setAttribute("shop-product", productDefinition.type);
         product.setAttribute("class", "clickable");
         product.setAttribute("position", productDefinition.position);
         product.setAttribute("dynamic-body", { mass: 1 });
