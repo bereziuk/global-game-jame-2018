@@ -48,6 +48,12 @@ export class Game {
     }
 
     reloadScene() {
+        this.newProductIndex = -1;
+        this.products = 0;
+        this.scannedProducts = 0;
+        this.packedProducts = 0;
+        this.brokenProducts = 0;
+
         let allProducts = $("[shop-product]");
 
         for (let product of allProducts) {
@@ -55,9 +61,6 @@ export class Game {
                 product.parentNode.removeChild(product);
             }, 100);
         }
-
-        // const mainScene = document.getElementById("scene-main");
-        // mainScene.reload();
     }
 
     getNewProduct() {
@@ -91,27 +94,16 @@ export class Game {
     }
 
     restartGame() {
-        this.products = 0;
-        this.scannedProducts = 0;
-        this.packedProducts = 0;
-        this.brokenProducts = 0;
-
         this.generateNewProduct();
-
         this.setHUDText("");
 
         setTimeout(() => {
-            this.setHUDText("Koniec gry");
+            this.setHUDText(`Scanned: ${this.scannedProducts} Packed: ${this.packedProducts} Spoiled: ${this.brokenProducts}`);
 
-            
-            setTimeout(() => {
-                this.setHUDText("Reset");
-                this.reloadScene();
-                
-                setTimeout(() => {
-                    this.restartGame();
-                }, 1000);
-            }, 10000);
-        }, 12000);
+            // setTimeout(() => {
+            //     this.reloadScene();
+            //     this.restartGame();
+            // }, 10000);
+        }, 18000);
     }
 }
