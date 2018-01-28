@@ -27,8 +27,9 @@ export function registerSceneMain() {
                 const shopItem = game.getHoveredItem();
 
                 if (game.doWeDragAnyProduct()) {
+                    let draggedProduct = game.getDraggedProduct();
                     game.dropDraggedProduct();
-                    dropDraggedProduct(shopItem);
+                    dropDraggedProduct(draggedProduct);
                 } else {
                     if (!game.hasHoveredItem()) {
                         return;

@@ -7,16 +7,12 @@ export function registerBasketDropArea() {
     AFRAME.registerComponent('basket-drop-area', {
         init: function () {
             this.el.addEventListener('collide', function (e) {
-
-                console.log('Player has collided with body #', e.detail);
-                e.detail.target.el;  // Original entity (basketDropAreas).
-
                 const product = e.detail.body.el;
                 if (product.hasAttribute(PRODUCT_PACKED)) {
                     return;
                 }
 
-                const productType = Object.values(product.getAttribute('shop-product')).join('');
+                const productType = Object.values(product.getAttribute('product-type')).join('');
                 let isProductBroken = productType === 'broken';
 
                 if (!product.hasAttribute(PRODUCT_SCANNED) && !isProductBroken) {
@@ -39,8 +35,17 @@ export function registerBasketDropArea() {
                 SOUNDS.playSuccess();
                 product.removeAttribute('shop-product');
                 product.setAttribute(PRODUCT_PACKED);
-            });
 
+                game.generateNewProduct();
+
+                removeProduct(product);
+            });
         }
     });
+}
+
+export function removeProduct(product) {
+    setTimeout(() => {
+        product.parentNode.removeChild(product);
+    }, 100);
 }

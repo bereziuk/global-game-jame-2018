@@ -5,11 +5,13 @@ export const PRODUCT_PACKED = 'already-packed';
 
 export class Game {
     constructor() {
+        this.newProductIndex = -1;
         this.products = 0;
         this.scannedProducts = 0;
         this.packedProducts = 0;
         this.brokenProducts = 0;
 
+<<<<<<< HEAD
         setTimeout(() => {
             this.setHUDText("Przygotuj się do gry");
         }, 2000);
@@ -17,6 +19,13 @@ export class Game {
         setTimeout(() => {
             this.restartGame();
         }, 5000);
+=======
+        setTimeout(() => this.startNewGame());
+    }
+
+    startNewGame() {
+        this.generateNewProduct();
+>>>>>>> b8712bc28291056ba9177a077efdc30749fe9f25
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -44,11 +53,10 @@ export class Game {
         document.querySelector('#score-panel .products-packed').innerHTML = this.packedProducts;
     }
 
-    generateNewProduct(timeout) {
+    generateNewProduct() {
         const tapeEntity = document.getElementById("tape-wrapper");
-        const newProduct = this.getNewProduct();
-        console.log(newProduct);
-        tapeEntity.appendChild(newProduct);
+
+        tapeEntity.appendChild(this.getNewProduct());
     }
 
     reloadScene() {
@@ -57,21 +65,21 @@ export class Game {
     }
 
     getNewProduct() {
-        const randomProductIndex = Math.floor(Math.random() * PRODUCTS.length);
-        const productDefinition = PRODUCTS[randomProductIndex];
-        const product = document.createElement("a-" + productDefinition.shape);
-
-        product.setAttribute("shop-product", productDefinition.type);
-        product.setAttribute("class", "clickable");
-        product.setAttribute("position", productDefinition.position);
-        product.setAttribute("dynamic-body", { mass: 1 });
-        product.setAttribute("material", productDefinition.material);
-
-        if (productDefinition.radius) {
-            product.setAttribute("radius", productDefinition.radius);
+        if (this.newProductIndex >= PRODUCTS.length - 1) {
+            this.newProductIndex = 0
         } else {
-            product.setAttribute("scale", productDefinition.scale);
+            this.newProductIndex++
         }
+        let productIndex = this.newProductIndex;
+
+        const productDefinition = PRODUCTS[productIndex];
+        const product = $(productDefinition.html)[0];
+
+        product.setAttribute("dynamic-body", { mass: 1 });
+        product.setAttribute("product-type", "" + productDefinition.type + "");
+        product.setAttribute("class", "clickable");
+        product.setAttribute("position", "1 1.35 -0.15");
+        product.setAttribute("shop-product", "true");
 
         return product;
     }
