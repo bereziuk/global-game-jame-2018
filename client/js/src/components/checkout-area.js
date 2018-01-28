@@ -1,5 +1,6 @@
 import {game} from "../app";
 import {PRODUCT_SCANNED} from "../game";
+import {SOUNDS} from "../utils/constants";
 
 export function registerCheckoutArea() {
     AFRAME.registerComponent('checkout-area', {
@@ -11,12 +12,24 @@ export function registerCheckoutArea() {
 
                 let draggedProduct = game.getDraggedProduct();
 
+                const productType = Object.values(draggedProduct.getAttribute('shop-product')).join('');
+                if (productType === "broken") {
+                    SOUNDS.playError();
+                    return;
+                }
+
                 if (draggedProduct.hasAttribute(PRODUCT_SCANNED)) {
                     return;
                 }
 
+                const scannerType = Object.values(this.getAttribute('checkout-area')).join('');
+                if (scannerType !== productType) {
+                    SOUNDS.playError();
+                    return;
+                }
+
                 game.scanProduct(draggedProduct);
-                beep();
+                SOUNDS.playBeep();
                 draggedProduct.setAttribute(PRODUCT_SCANNED, true);
             });
 
@@ -25,9 +38,4 @@ export function registerCheckoutArea() {
             // });
         },
     });
-}
-
-function beep() {
-    var snd = new Audio("/assets/sounds/product-scanned.mp3");
-    snd.play();
 }
