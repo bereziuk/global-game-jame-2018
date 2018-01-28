@@ -9,7 +9,6 @@
     "webpack": "webpack --watch --progress"
   },
   "dependencies": {
-    "aframe": "0.7.1",
     "aframe-click-drag-component": "^3.0.1",
     "aframe-environment-component": "^1.0.0",
     "aframe-gamepad-controls": "^0.6.0",
