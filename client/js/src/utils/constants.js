@@ -16,13 +16,7 @@ export const PRODUCTS = [
     {
         type: "other",
         html: `<a-box material="src: #texture-detergent-broken" position="0.081 1.084 1.237" scale="0.11 0.04 0.14"></a-box>`
-    },/*
-    {
-        shape: "sphere",
-        material: { texture: { src: "#texture-tape" }},
-        radius: "0.1",
-        type: "broken"
-    }*/
+    }
 ];
 
 export const SOUNDS = {
