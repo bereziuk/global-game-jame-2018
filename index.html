@@ -120,9 +120,12 @@
         <img id="texture-rice-broken" src="/assets/textures/rice-broken.png">
         <img id="texture-detergent-broken" src="/assets/textures/detergent-broken.png">
 
+        <img id="texture-caption-other" src="/assets/textures/caption-other.png">
+        <img id="texture-caption-fruitsandvegies" src="/assets/textures/caption-fruitsandvegies.png">
+        <img id="texture-caption-spoiled" src="/assets/textures/caption-spoiled.png">
     </a-assets>
 
-    <a-entity position="0 -0.8 0">
+    <a-entity position="0 1 0">
         <a-camera id="camera-main"
                 position="-0.05 -0.05 0.80"
                 rotation="-34.091 -0.057"
@@ -272,6 +275,9 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+
+        <a-box static-body color="#8b4513" material="src: #texture-caption-other" scale="0.02 1.42 1" position="-0.037 0.884 0" opacity="1"></a-box>
+
     </a-entity>
 
     <a-entity id="basket-2" color="purple" scale="0.6 0.3 0.5" position="-1.256 1.100 1.168">
@@ -280,6 +286,8 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0" opacity="1"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45" opacity="1"></a-box>
+
+        <a-box static-body color="#8b4513" material="src: #texture-caption-fruitsandvegies" scale="0.02 1.42 1" position="-0.037 0.884 0" opacity="1"></a-box>
     </a-entity>
 
     <a-entity id="basket-3" color="black" scale="0.6 0.3 0.5" position="0.932 1.081 1.187" rotation="0 90 0" opacity="0.8">
@@ -288,6 +296,8 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 -0.45"></a-box>
         <a-box static-body color="#8b4513" scale="0.05 0.5 1" position="0.9 0 0"></a-box>
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45"></a-box>
+
+        <a-box static-body color="#8b4513" material="src: #texture-caption-spoiled" scale="0.02 1.42 1" position="0.437 0.884 0.468" opacity="1" rotation="0 90 0"></a-box>
     </a-entity>
 
     <a-entity id="tape-wrapper">
