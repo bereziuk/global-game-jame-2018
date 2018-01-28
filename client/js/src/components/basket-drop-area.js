@@ -1,5 +1,7 @@
 import {game} from "../app";
 import {PRODUCT_PACKED, PRODUCT_SCANNED} from "../game";
+import {playError} from "./checkout-area";
+import {SOUNDS} from "../utils/constants";
 
 export function registerBasketDropArea() {
     AFRAME.registerComponent('basket-drop-area', {
@@ -10,17 +12,31 @@ export function registerBasketDropArea() {
                 e.detail.target.el;  // Original entity (basketDropAreas).
 
                 const product = e.detail.body.el;
-
                 if (product.hasAttribute(PRODUCT_PACKED)) {
                     return;
                 }
 
-                if (!product.hasAttribute(PRODUCT_SCANNED)) {
+                const productType = Object.values(product.getAttribute('shop-product')).join('');
+                let isProductBroken = productType === 'broken';
+
+                if (!product.hasAttribute(PRODUCT_SCANNED) && !isProductBroken) {
+                    SOUNDS.playError();
                     return;
                 }
 
-                game.packProduct(product);
+                const dropAreaType = Object.values(this.getAttribute('basket-drop-area')).join('');
+                if (productType !== dropAreaType) {
+                    SOUNDS.playError();
+                    return;
+                }
 
+                if (isProductBroken) {
+                    game.brokenProduct(product);
+                } else {
+                    game.packProduct(product);
+                }
+
+                SOUNDS.playSuccess();
                 product.removeAttribute('shop-product');
                 product.setAttribute(PRODUCT_PACKED);
             });
