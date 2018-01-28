@@ -27,7 +27,7 @@
     <span>Packed: <strong class="products-packed">0</strong></span>
     <span>Broken: <strong class="products-broken">0</strong></span>
 </div>
-<a-scene id="scene-main" physics="debug: true" scene-main physics-world="gravity: 0 -9.8 0">
+<a-scene id="scene-main" physics="debug: false" scene-main physics-world="gravity: 0 -9.8 0">
 
     <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
         <a-plane static-body
@@ -123,7 +123,7 @@
     </a-assets>
 
 
-    <a-entity position="0 0.1 0">
+    <a-entity position="0 -1.2 0">
     <a-camera id="camera-main"
               position="-0.05 -0.05 0.80"
               rotation="-34.091 -0.057"
@@ -291,12 +291,15 @@
         <a-box static-body color="#8b4513" scale="1 0.5 0.05" position="0.45 0 0.45"></a-box>
     </a-entity>
 
-    <a-entity id="tapewrapper">
+    <a-entity id="tape-wrapper">
         <a-box static-body
                id="tape"
                src="#texture-tape"
                position="3.5 0 0"
                scale="6 2 1"></a-box>
+        <a-box static-body opacity="0" id="tape-border-1" position="3.5 0.907 -0.44" scale="6 0.5 0.05"></a-box>
+        <a-box static-body opacity="0" id="tape-border-2" position="3.5 0.907 0.489" scale="6 0.5 0.05"></a-box>
+        <a-box static-body opacity="0" id="tape-border-3" position="1.939 0.907 0" scale="0.05 0.5 -0.992"></a-box>
     </a-entity>
 <!--
     <a-entity id="cars-1" scale="1.2 1.2 1.2" position="1.502 0 1.977">
