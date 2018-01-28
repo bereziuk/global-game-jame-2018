@@ -3,8 +3,10 @@ export const PRODUCT_PACKED = 'already-packed';
 
 export class Game {
     constructor() {
+        this.products = 0;
         this.scannedProducts = 0;
         this.packedProducts = 0;
+        this.brokenProducts = 0;
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -17,6 +19,10 @@ export class Game {
     dropDraggedProduct() { this.draggedProduct = undefined; this.hoveredItem = undefined }
     setDraggedProduct(product) { this.draggedProduct = product; }
 
+    brokenProduct(produt) {
+        this.brokenProducts++;
+        document.querySelector('#score-panel .products-broken').innerHTML = this.brokenProducts;
+    };
     scanProduct(produt) {
         this.scannedProducts++;
         document.querySelector('#score-panel .products-scanned').innerHTML = this.scannedProducts;
