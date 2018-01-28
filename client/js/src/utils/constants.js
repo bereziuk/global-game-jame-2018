@@ -5,23 +5,24 @@ export const colors = {
 
 export const PRODUCTS = [
     {
-        shape: "box",
-        material: { texture: { color: "#f00" }},
-        scale: "0.1 0.2 0.05",
-        type: "fruit"
+        type: "fruit",
+        html: `<a-entity scale="0.5 0.5 0.5">
+            <a-entity
+                obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj"
+                scale="0.05 0.05 0.05" rotation="0 0 -25"></a-entity>
+        <a-box scale="0.45 0.18 0.1" opacity="0.3"></a-box>
+        </a-entity>`
     },
     {
-        shape: "sphere",
-        material: { texture: { src: "#texture-tape" }},
-        radius: "0.1",
-        type: "other"
-    },
+        type: "other",
+        html: `<a-box material="src: #texture-detergent-broken" position="0.081 1.084 1.237" scale="0.11 0.04 0.14"></a-box>`
+    },/*
     {
         shape: "sphere",
         material: { texture: { src: "#texture-tape" }},
         radius: "0.1",
         type: "broken"
-    }
+    }*/
 ];
 
 export const SOUNDS = {

@@ -5,7 +5,7 @@ export const PRODUCT_PACKED = 'already-packed';
 
 export class Game {
     constructor() {
-        this.newProductIndex = 0;
+        this.newProductIndex = -1;
         this.products = 0;
         this.scannedProducts = 0;
         this.packedProducts = 0;
@@ -57,20 +57,13 @@ export class Game {
         let productIndex = this.newProductIndex;
 
         const productDefinition = PRODUCTS[productIndex];
-        const product = document.createElement("a-" + productDefinition.shape);
+        const product = $(productDefinition.html)[0];
 
-        product.setAttribute("shop-product", "true");
+        product.setAttribute("dynamic-body", { mass: 1 });
         product.setAttribute("product-type", "" + productDefinition.type + "");
         product.setAttribute("class", "clickable");
         product.setAttribute("position", "1 1.55 -0.15");
-        product.setAttribute("dynamic-body", { mass: 1 });
-        product.setAttribute("material", productDefinition.material);
-
-        if (productDefinition.radius) {
-            product.setAttribute("radius", productDefinition.radius);
-        } else {
-            product.setAttribute("scale", productDefinition.scale);
-        }
+        product.setAttribute("shop-product", "true");
 
         return product;
     }

@@ -27,7 +27,7 @@
     <span>Packed: <strong class="products-packed">0</strong></span>
     <span>Broken: <strong class="products-broken">0</strong></span>
 </div>
-<a-scene id="scene-main" physics="debug: false" scene-main physics-world="gravity: 0 -9.8 0">
+<a-scene id="scene-main" physics="debug: true" scene-main physics-world="gravity: 0 -9.8 0">
 
     <a-entity environment="preset: forest; lightning: point; lightPosition: 0 2 5; shadow: true;">
         <a-plane static-body
@@ -88,11 +88,11 @@
         <a-asset-item id="model-car-violet-mtl" src="/assets/models/cars/car-normal-violet.mtl"></a-asset-item>
 
         <!-- SHOP ITEMS -->
+        <a-asset-item id="model-banana-obj" src="/assets/models/products/banana/banana.obj"></a-asset-item>
+        <a-asset-item id="model-banana-mtl" src="/assets/models/products/banana/banana.mtl"></a-asset-item>
         <!-- <a-asset-item id="model-apple-obj" src="/assets/models/products/apple/apple.obj"></a-asset-item>
         <a-asset-item id="model-apple-mtl" src="/assets/models/products/apple/apple.mtl"></a-asset-item>
 
-        <a-asset-item id="model-banana-obj" src="/assets/models/products/banana/banana.obj"></a-asset-item>
-        <a-asset-item id="model-banana-mtl" src="/assets/models/products/banana/banana.mtl"></a-asset-item>
 
         <a-asset-item id="model-muffin-obj" src="/assets/models/products/muffin/muffin.obj"></a-asset-item>
         <a-asset-item id="model-muffin-mtl" src="/assets/models/products/muffin/muffin.mtl"></a-asset-item>
@@ -371,10 +371,7 @@
 
     <a-entity geometry="primitive: box" material="src: #texture-rice-broken" position="0.227 1.084 1.237" scale="0.11 0.04 0.14"></a-entity>
 
-    <a-entity geometry="primitive: box" material="src: #texture-detergent-broken" position="0.081 1.084 1.237" scale="0.11 0.04 0.14"></a-entity>
+    <!--<a-box material="src: #texture-detergent-broken" position="0.081 1.084 1.237" scale="0.11 0.04 0.14"></a-box>-->
 </a-scene>
 </body>
 </html>
-
-
-<a-entity geometry="" material="src:[object HTMLImageElement]" position="0.527 1.084 1.051" scale="0.11 0.03 0.07"></a-entity>
