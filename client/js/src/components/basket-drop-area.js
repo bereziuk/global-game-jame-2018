@@ -37,8 +37,15 @@ export function registerBasketDropArea() {
                 product.setAttribute(PRODUCT_PACKED);
 
                 game.generateNewProduct();
-            });
 
+                removeProduct(product);
+            });
         }
     });
+}
+
+export function removeProduct(product) {
+    setTimeout(() => {
+        product.parentNode.removeChild(product);
+    }, 100);
 }
