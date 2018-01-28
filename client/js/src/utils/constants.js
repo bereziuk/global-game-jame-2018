@@ -8,13 +8,22 @@ export const PRODUCTS = [
         shape: "box",
         material: { texture: { color: "#f00" }},
         scale: "0.1 0.2 0.05",
-        position: "1.5 1.45 -0.15"
+        position: "1.5 1.45 -0.15",
+        type: "fruit"
     },
     {
         position: "1.5 1.55 -0.15",
         shape: "sphere",
         material: { texture: { src: "#texture-tape" }},
-        radius: "0.1"
+        radius: "0.1",
+        type: "other"
+    },
+    {
+        position: "1.5 1.55 -0.15",
+        shape: "sphere",
+        material: { texture: { color: "green" }},
+        radius: "0.1",
+        type: "broken"
     }
 ];
 
