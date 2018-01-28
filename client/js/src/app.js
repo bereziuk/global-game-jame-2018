@@ -1,6 +1,15 @@
 import {registerClickDragComponent} from "./components/click-drag";
 import {registerSceneMain} from "./scenes/scene-main";
+import {registerCheckoutArea} from "./components/checkout-area";
+import {registerShopProduct} from "./components/shop-product";
+import {registerBasketDropArea} from "./components/basket-drop-area";
+import {Game} from "./game";
+
+
+export const game = new Game();
 
 registerClickDragComponent();
 registerSceneMain();
-console.log("deploy");
+registerCheckoutArea();
+registerShopProduct();
+registerBasketDropArea();

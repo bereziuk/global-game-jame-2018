@@ -1,116 +1,67 @@
+import {game} from "../app";
+
+let KEY_SPACE = 32;
+
 export function registerSceneMain() {
     AFRAME.registerComponent('scene-main', {
         init: function () {
 
-            window.hoveredShopItemId = null;
-            window.isHoveredShopItem = false;
+            const mainCursor = document.getElementById("cursor-main");
+            const mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
+            const mainScene = document.getElementById("scene-main");
+            const mainCamera = document.getElementById("camera-main");
 
-            let draggableElements = document.querySelector('[click-drag]');
-            let isItemActive = false;
-
-            draggableElements.addEventListener("dragstart", () => {
-                draggableElements.components['dynamic-body'].pause();
-            });
-
-            draggableElements.addEventListener("dragend", (dragInfo) => {
-                let velocityDamp = 0.5;
-                let camera = draggableElements.sceneEl.camera;
-                let rotation = camera.up.clone();
-
-                rotation.cross(camera.getWorldDirection());
-
-                let rotatedVelocity = new window.AFRAME.THREE.Vector3(
-                    dragInfo.detail.velocity.x * velocityDamp,
-                    dragInfo.detail.velocity.y * velocityDamp,
-                    dragInfo.detail.velocity.z * velocityDamp
-                );
-
-                rotatedVelocity.applyAxisAngle(rotation, Math.PI / 8);
-
-                draggableElements.components['dynamic-body'].play();
-                draggableElements.body.velocity.set(rotatedVelocity.x, rotatedVelocity.y, rotatedVelocity.z);
+            mainCamera.addEventListener('gamepadbuttondown', function (e) {
+                handleKeyOrButtonDown();
             });
 
             document.addEventListener("keydown", (event) => {
-                if (event.keyCode !== 32) {
+                if (event.keyCode !== KEY_SPACE) {
                     return;
                 }
 
-                if (isItemActive) {
-                    isItemActive = false;
-                    let shopItem = document.getElementById(window.hoveredShopItemId);
-                    let mainCursor = document.getElementById("cursor-main");
-                    let mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
-                    let mainScene = document.getElementById("scene-main");
+                handleKeyOrButtonDown();
+            });
 
-                    shopItem.pause();
-                    shopItem.setAttribute('position', mainCursorOrigin);
+            function handleKeyOrButtonDown() {
+                const shopItem = game.getHoveredItem();
 
-                    mainScene.appendChild(shopItem);
-                    shopItem.setAttribute('dynamic-body', {
-                        shape: 'auto',
-                        mass: 1.5,
-                        linearDamping: 0.005
-                    });
-                    shopItem.play();
+                if (game.doWeDragAnyProduct()) {
+                    game.dropDraggedProduct();
+                    dropDraggedProduct(shopItem);
                 } else {
-                    if (!window.isHoveredShopItem) {
+                    if (!game.hasHoveredItem()) {
                         return;
                     }
 
-                    isItemActive = true;
-                    let shopItem = document.getElementById(window.hoveredShopItemId);
-                    let mainCursor = document.getElementById("cursor-main");
-
-                    shopItem.pause();
-                    shopItem.removeAttribute('dynamic-body');
-                    shopItem.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
-                    mainCursor.appendChild(shopItem);
-                    shopItem.play();
+                    game.setDraggedProduct(shopItem);
+                    dragHoveredProduct(shopItem);
                 }
-            });
+            }
 
+            function dragHoveredProduct(product) {
+                product.pause();
+                product.removeAttribute('dynamic-body');
+                product.setAttribute("position", new window.AFRAME.THREE.Vector3(0, 0, -0.01));
 
-            var playerEl = document.querySelector('[basket-drop-area]');
-            playerEl.addEventListener('collide', function (e) {
-                console.log('Player has collided with body #', e.detail);
-                e.detail.target.el;  // Original entity (playerEl).
-                e.detail.body.el;    // Other entity, which playerEl touched.
-            });
-        }
-    });
+                mainCursor.appendChild(product);
 
+                product.play();
+            }
 
-    // TODO: register components with unique names and IDs after items are generated!
-    AFRAME.registerComponent('shop-item-1', {
-        init: function () {
-            let el = this.el;
+            function dropDraggedProduct(product) {
+                product.pause();
+                product.setAttribute('position', mainCursorOrigin);
 
-            el.addEventListener('mouseenter', function () {
-                window.hoveredShopItemId = el.id;
-                window.isHoveredShopItem = true;
-            });
+                mainScene.appendChild(product);
+                product.setAttribute('dynamic-body', {
+                    shape: 'auto',
+                    mass: 1.5,
+                    linearDamping: 0.005
+                });
 
-            el.addEventListener('mouseleave', function () {
-                window.isHoveredShopItem = false;
-            });
-
-        }
-    });
-
-    AFRAME.registerComponent('shop-item-2', {
-        init: function () {
-            let el = this.el;
-
-            el.addEventListener('mouseenter', function () {
-                window.hoveredShopItemId = el.id;
-                window.isHoveredShopItem = true;
-            });
-
-            el.addEventListener('mouseleave', function () {
-                window.isHoveredShopItem = false;
-            });
-
+                product.play();
+            }
         }
     });
 }
