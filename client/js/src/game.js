@@ -104,6 +104,6 @@ export class Game {
             //     this.reloadScene();
             //     this.restartGame();
             // }, 10000);
-        }, 18000);
+        }, 300000);
     }
 }
