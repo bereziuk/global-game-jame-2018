@@ -4,6 +4,13 @@ export const colors = {
 };
 
 export var PRODUCTS = shuffle(shuffle(shuffle([
+    {
+        type: "other",
+        html: `<a-entity scale="0.5 0.5 0.5">
+            <a-entity obj-model="mtl:#model-muffin-mtl;obj:#model-muffin-obj" scale="0.15 0.15 0.15"></a-entity>
+            <a-box position="0 0.144 0.009" scale="0.450 0.234 0.367" visible="false"></a-box>
+        </a-entity>`
+    },
 
     { type: "other", html: `<a-entity geometry="primitive: box" material="src: #texture-rice" scale="0.15 0.04 0.2"></a-entity>` },
     { type: "broken", html: `<a-entity geometry="primitive: box" material="src: #texture-rice-broken" scale="0.15 0.04 0.2"></a-entity>` },
@@ -38,7 +45,7 @@ export var PRODUCTS = shuffle(shuffle(shuffle([
             <a-entity
                 obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj"
                 scale="0.05 0.05 0.05" rotation="0 0 -25"></a-entity>
-        <a-box scale="0.45 0.18 0.1" opacity="0.3"></a-box>
+        <a-box scale="0.45 0.18 0.1" visible="false"></a-box>
         </a-entity>`
     },
 ])));
