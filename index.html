@@ -104,10 +104,12 @@
         <img id="texture-onion" src="/assets/textures/onion.png">
         <img id="texture-orange" src="/assets/textures/orange.png">
         <img id="texture-cookies" src="/assets/textures/cookies.png">
+        <img id="texture-candy" src="/assets/textures/candy.png">
+        <img id="texture-apple" src="/assets/textures/apple.png">
     </a-assets>
 
 
-    <a-entity position="0 0.1 0">
+    <a-entity position="0 -0.2 0">
     <a-camera id="camera-main"
               position="-0.05 -0.05 0.80"
               rotation="-34.091 -0.057"
@@ -281,6 +283,9 @@
                src="#texture-tape"
                position="3.5 0 0"
                scale="6 2 1"></a-box>
+        <a-box static-body opacity="0" id="tape-border-1" position="3.5 0.907 -0.44" scale="6 0.5 0.05"></a-box>
+        <a-box static-body opacity="0" id="tape-border-2" position="3.5 0.907 0.489" scale="6 0.5 0.05"></a-box>
+        <a-box static-body opacity="0" id="tape-border-3" position="1.939 0.907 0" scale="0.05 0.5 -0.992"></a-box>
     </a-entity>
 <!--
     <a-entity id="cars-1" scale="1.2 1.2 1.2" position="1.502 0 1.977">
@@ -320,8 +325,11 @@
 
     <a-entity geometry="primitive: sphere" material="src: #texture-orange" position="1.227 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
-    <a-entity geometry="primitive: box" material="src: #texture-cookies" position="1.527 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+    <a-entity geometry="primitive: box" material="src: #texture-cookies" position="0.327 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
+    <a-entity geometry="primitive: box" material="src: #texture-candy" position="0.527 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-apple" position="0.427 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 </a-scene>
 </body>
 </html>
