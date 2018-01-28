@@ -13,6 +13,7 @@
     <script src="/scripts/aframe/dist/aframe.js"></script>
     <script src="/scripts/aframe-click-drag-component/dist/aframe-click-drag-component.min.js"></script>
     <script src="/scripts/aframe-physics-system/dist/aframe-physics-system.min.js"></script>
+    <script src="/scripts/aframe-gamepad-controls/dist/aframe-gamepad-controls.min.js"></script>
     <script src="/scripts/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
 
     <!-- App -->
@@ -91,7 +92,12 @@
     </a-assets>
 
 
-    <a-camera id="camera-main" position="-0.05 -0.05 0.80" rotation="-34.091 -0.057" wasd-controls-enabled="true" user-height="1.8">
+    <a-camera id="camera-main"
+              position="-0.05 -0.05 0.80"
+              rotation="-34.091 -0.057"
+              wasd-controls-enabled="true"
+              gamepad-controls="lookEnabled: false"
+              user-height="1.8">
         <a-cursor id="cursor-main" raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;"></a-cursor>
     </a-camera>
 

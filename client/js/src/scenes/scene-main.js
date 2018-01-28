@@ -9,12 +9,21 @@ export function registerSceneMain() {
             const mainCursor = document.getElementById("cursor-main");
             const mainCursorOrigin = mainCursor.components['raycaster'].raycaster.ray.origin;
             const mainScene = document.getElementById("scene-main");
+            const mainCamera = document.getElementById("camera-main");
+
+            mainCamera.addEventListener('gamepadbuttondown', function (e) {
+                handleKeyOrButtonDown();
+            });
 
             document.addEventListener("keydown", (event) => {
                 if (event.keyCode !== KEY_SPACE) {
                     return;
                 }
 
+                handleKeyOrButtonDown();
+            });
+
+            function handleKeyOrButtonDown() {
                 const shopItem = game.getHoveredItem();
 
                 if (game.doWeDragAnyProduct()) {
@@ -28,7 +37,7 @@ export function registerSceneMain() {
                     game.setDraggedProduct(shopItem);
                     dragHoveredProduct(shopItem);
                 }
-            });
+            }
 
             function dragHoveredProduct(product) {
                 product.pause();
