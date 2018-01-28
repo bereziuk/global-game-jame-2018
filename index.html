@@ -76,7 +76,7 @@
         <a-asset-item id="model-car-violet-mtl" src="/assets/models/cars/car-normal-violet.mtl"></a-asset-item>
 
         <!-- SHOP ITEMS -->
-        <a-asset-item id="model-apple-obj" src="/assets/models/products/apple/apple.obj"></a-asset-item>
+        <!-- <a-asset-item id="model-apple-obj" src="/assets/models/products/apple/apple.obj"></a-asset-item>
         <a-asset-item id="model-apple-mtl" src="/assets/models/products/apple/apple.mtl"></a-asset-item>
 
         <a-asset-item id="model-banana-obj" src="/assets/models/products/banana/banana.obj"></a-asset-item>
@@ -86,11 +86,14 @@
         <a-asset-item id="model-muffin-mtl" src="/assets/models/products/muffin/muffin.mtl"></a-asset-item>
 
         <a-asset-item id="model-cookies-obj" src="/assets/models/products/cookies/cookies.obj"></a-asset-item>
-        <a-asset-item id="model-cookies-mtl" src="/assets/models/products/cookies/cookies.mtl"></a-asset-item>
+        <a-asset-item id="model-cookies-mtl" src="/assets/models/products/cookies/cookies.mtl"></a-asset-item> -->
 
         <!-- TEXTURES -->
         <img id="texture-ball" src="/assets/textures/ball.png">
         <img id="texture-tape" src="/assets/textures/tape.png">
+        <img id="texture-tomato" src="/assets/textures/tomato.png">
+        <img id="texture-onion" src="/assets/textures/onion.png">
+        <img id="texture-orange" src="/assets/textures/orange.png">
     </a-assets>
 
 
@@ -286,15 +289,21 @@
     </a-entity>
 
 
-    <a-entity obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj" position="0.851 1.102 0.661" scale="0.05 0.05 0.05"></a-entity>
+    <!-- <a-entity obj-model="mtl:/assets/models/products/banana/banana.mtl;obj:/assets/models/products/banana/banana.obj" position="0.851 1.102 0.661" scale="0.05 0.05 0.05"></a-entity>
 
-    <a-entity obj-model="mtl:/assets/models/products/apple/apple.mtl;obj:/assets/models/products/apple/apple.obj" position="1.013 1.166 1.034" scale="0.02 0.02 0.02"></a-entity>
+    <a-entity obj-model="mtl:/assets/models/products/apple/apple.mtl;obj:/assets/models/products/apple/apple.obj" position="1.013 1.166 1.034" scale="0.02 0.02 0.02"></a-entity> -->
 
     <a-entity obj-model="obj:#model-people-couple" position="0 0.078 -1.57" scale="0.013 0.013 0.013"></a-entity>
 
-    <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity>
+    <!-- <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity>
 
-    <a-entity obj-model="mtl:#model-muffin-mtl;obj:#model-muffin-obj" position="0.712 0.998 1.162" scale="0.08 0.08 0.08"></a-entity>
+    <a-entity obj-model="mtl:#model-muffin-mtl;obj:#model-muffin-obj" position="0.712 0.998 1.162" scale="0.08 0.08 0.08"></a-entity> -->
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-tomato" position="0.627 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-onion" position="0.927 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
+
+    <a-entity geometry="primitive: sphere" material="src: #texture-orange" position="1.227 1.084 0.937" scale="0.07 0.07 0.07"></a-entity>
 
 </a-scene>
 </body>
