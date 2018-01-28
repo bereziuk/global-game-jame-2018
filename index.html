@@ -125,6 +125,8 @@
         <img id="texture-caption-other" src="/assets/textures/caption-other.png">
         <img id="texture-caption-fruitsandvegies" src="/assets/textures/caption-fruitsandvegies.png">
         <img id="texture-caption-spoiled" src="/assets/textures/caption-spoiled.png">
+
+        <img id="texture-shop-shelves" src="/assets/textures/shop-shelves.jpeg">
     </a-assets>
 
     <a-entity position="0 1.5 0">
@@ -316,7 +318,12 @@
 
     <a-entity obj-model="obj:#model-people-couple" position="0 0.078 -1.57" scale="0.013 0.013 0.013"></a-entity>
 
-    <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity id="shop-shelve-1" position="9.2 1.2 -7"><a-box  static-body="{ mass: 5 }" material="src: #texture-shop-shelves" scale="9 2.2 1.5"></a-box></a-entity>
+    <a-entity id="shop-shelve-2" position="9.2 1.2 -4"><a-box  static-body="{ mass: 5 }" material="src: #texture-shop-shelves" scale="9 2.2 1.5"></a-box></a-entity>
+    <a-entity id="shop-shelve-3" position="9.2 1.2 -1"><a-box  static-body="{ mass: 5 }" material="src: #texture-shop-shelves" scale="9 2.2 1.5"></a-box></a-entity>
+    <a-entity id="shop-shelve-4" position="9.2 1.2 2"><a-box   static-body="{ mass: 5 }" material="src: #texture-shop-shelves" scale="9 2.2 1.5"></a-box></a-entity>
+    <a-entity id="shop-shelve-5" position="9.2 1.2 5"><a-box   static-body="{ mass: 5 }" material="src: #texture-shop-shelves" scale="9 2.2 1.5"></a-box></a-entity>
+    <!-- <a-entity obj-model="mtl:#model-cookies-mtl;obj:#model-cookies-obj" position="0.989 1.01 1.297" rotation="0 -64.81 0" scale="0.1 0.1 0.1"></a-entity> -->
 </a-scene>
 </body>
 </html>

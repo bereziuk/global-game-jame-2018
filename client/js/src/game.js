@@ -14,6 +14,10 @@ export class Game {
         setTimeout(() => {
             this.restartGame();
         }, 5000);
+
+        setTimeout(() => {
+            this.setHUDText("Przygotuj się do gry");
+        }, 2000);
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
