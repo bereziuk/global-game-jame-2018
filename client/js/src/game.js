@@ -11,8 +11,12 @@ export class Game {
         this.brokenProducts = 0;
 
         setTimeout(() => {
-            this.startNewGame();
+            this.setHUDText("Przygotuj się do gry");
         }, 2000);
+
+        setTimeout(() => {
+            this.restartGame();
+        }, 5000);
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -47,6 +51,11 @@ export class Game {
         tapeEntity.appendChild(newProduct);
     }
 
+    reloadScene() {
+        const mainScene = document.getElementById("scene-main");
+        mainScene.reloadScene();
+    }
+
     getNewProduct() {
         const randomProductIndex = Math.floor(Math.random() * PRODUCTS.length);
         const productDefinition = PRODUCTS[randomProductIndex];
@@ -67,13 +76,33 @@ export class Game {
         return product;
     }
 
-    startNewGame() {
-        this.showStartPage();
-        this.generateNewProduct();
+    setHUDText(text) {
+        const hud = document.getElementById("hud");
+        hud.setAttribute("value", text);
     }
 
-    showStartPage() {
-        console.log("start");
-        $("#hud").text("Przygotuj się do gry");
+    restartGame() {
+        this.products = 0;
+        this.scannedProducts = 0;
+        this.packedProducts = 0;
+        this.brokenProducts = 0;
+
+        this.generateNewProduct();
+
+        const resetTime = 10000;
+        const gameTime = 15000;
+        const resetMessage = (timer) => {
+            console.log(timer);
+            this.setHUDText("Nowa gra za: ", timer, "sekund");
+            timer = timer - 1;
+
+            if (timer) {
+                setTimeout(() => {
+                    resetMessage(timer);
+                });
+            } else {
+                this.setHUDText("koniec");
+            }
+        };
     }
 }
