@@ -11,7 +11,7 @@ export class Game {
         this.brokenProducts = 0;
 
         setTimeout(() => {
-            this.generateNewProduct(10000);
+            this.startNewGame();
         }, 2000);
     }
 
@@ -28,7 +28,8 @@ export class Game {
     brokenProduct(produt) {
         this.brokenProducts++;
         document.querySelector('#score-panel .products-broken').innerHTML = this.brokenProducts;
-    };
+    }
+
     scanProduct(produt) {
         this.scannedProducts++;
         document.querySelector('#score-panel .products-scanned').innerHTML = this.scannedProducts;
@@ -64,5 +65,15 @@ export class Game {
         }
 
         return product;
+    }
+
+    startNewGame() {
+        this.showStartPage();
+        this.generateNewProduct();
+    }
+
+    showStartPage() {
+        console.log("start");
+        $("#hud").text("Przygotuj się do gry");
     }
 }
