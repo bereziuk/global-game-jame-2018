@@ -3,3 +3,4 @@ import {registerSceneMain} from "./scenes/scene-main";
 
 registerClickDragComponent();
 registerSceneMain();
+console.log("deploy");
