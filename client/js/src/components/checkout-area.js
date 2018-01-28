@@ -13,7 +13,6 @@ export function registerCheckoutArea() {
                 let draggedProduct = game.getDraggedProduct();
 
                 const productType = Object.values(draggedProduct.getAttribute('product-type')).join('');
-                console.log('productType', productType);
                 if (productType === "broken") {
                     SOUNDS.playError();
                     return;
