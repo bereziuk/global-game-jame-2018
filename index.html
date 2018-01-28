@@ -21,11 +21,10 @@
 </head>
 
 <body>
-<div class="hud">Cashier Simulator VR</div>
 <div id="score-panel">
     <span>Scanned: <strong class="products-scanned">0</strong></span>
     <span>Packed: <strong class="products-packed">0</strong></span>
-    <span>Broken: <strong class="products-broken">0</strong></span>
+    <span>Spoiled: <strong class="products-broken">0</strong></span>
 </div>
 <a-scene id="scene-main" physics="debug: false" scene-main physics-world="gravity: 0 -9.8 0">
 
@@ -128,14 +127,20 @@
         <img id="texture-caption-spoiled" src="/assets/textures/caption-spoiled.png">
     </a-assets>
 
+<<<<<<< HEAD
+    <a-entity position="0 1.5 0">
+=======
     <a-entity position="0 2 0">
+>>>>>>> b8712bc28291056ba9177a077efdc30749fe9f25
         <a-camera id="camera-main"
                 position="-0.05 -0.05 0.80"
                 rotation="-34.091 -0.057"
                 wasd-controls-enabled="true"
                 gamepad-controls="lookEnabled: false"
                 user-height="0">
-            <a-cursor id="cursor-main" raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;"></a-cursor>
+            <a-cursor id="cursor-main" raycaster="objects: .clickable" color="#fff" opacity="0.75" material="color: #0ff;">
+                <a-text id="hud" value="Cashier Simulator VR"  align="center" scale="0.2 0.2 0.2" position="0 0.2 0"></a-text>
+            </a-cursor>
         </a-camera>
     </a-entity>
 

@@ -11,11 +11,21 @@ export class Game {
         this.packedProducts = 0;
         this.brokenProducts = 0;
 
+<<<<<<< HEAD
+        setTimeout(() => {
+            this.setHUDText("Przygotuj się do gry");
+        }, 2000);
+
+        setTimeout(() => {
+            this.restartGame();
+        }, 5000);
+=======
         setTimeout(() => this.startNewGame());
     }
 
     startNewGame() {
         this.generateNewProduct();
+>>>>>>> b8712bc28291056ba9177a077efdc30749fe9f25
     }
 
     setHoveredItem(product) { this.hoveredItem = product; }
@@ -31,7 +41,8 @@ export class Game {
     brokenProduct(produt) {
         this.brokenProducts++;
         document.querySelector('#score-panel .products-broken').innerHTML = this.brokenProducts;
-    };
+    }
+
     scanProduct(produt) {
         this.scannedProducts++;
         document.querySelector('#score-panel .products-scanned').innerHTML = this.scannedProducts;
@@ -46,6 +57,11 @@ export class Game {
         const tapeEntity = document.getElementById("tape-wrapper");
 
         tapeEntity.appendChild(this.getNewProduct());
+    }
+
+    reloadScene() {
+        const mainScene = document.getElementById("scene-main");
+        mainScene.reloadScene();
     }
 
     getNewProduct() {
@@ -66,5 +82,35 @@ export class Game {
         product.setAttribute("shop-product", "true");
 
         return product;
+    }
+
+    setHUDText(text) {
+        const hud = document.getElementById("hud");
+        hud.setAttribute("value", text);
+    }
+
+    restartGame() {
+        this.products = 0;
+        this.scannedProducts = 0;
+        this.packedProducts = 0;
+        this.brokenProducts = 0;
+
+        this.generateNewProduct();
+
+        const resetTime = 10000;
+        const gameTime = 15000;
+        const resetMessage = (timer) => {
+            console.log(timer);
+            this.setHUDText("Nowa gra za: ", timer, "sekund");
+            timer = timer - 1;
+
+            if (timer) {
+                setTimeout(() => {
+                    resetMessage(timer);
+                });
+            } else {
+                this.setHUDText("koniec");
+            }
+        };
     }
 }
