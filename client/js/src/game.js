@@ -48,8 +48,16 @@ export class Game {
     }
 
     reloadScene() {
-        const mainScene = document.getElementById("scene-main");
-        mainScene.reloadScene();
+        let allProducts = $("[shop-product]");
+
+        for (let product of allProducts) {
+            setTimeout(() => {
+                product.parentNode.removeChild(product);
+            }, 100);
+        }
+
+        // const mainScene = document.getElementById("scene-main");
+        // mainScene.reload();
     }
 
     getNewProduct() {
@@ -94,17 +102,16 @@ export class Game {
 
         setTimeout(() => {
             this.setHUDText("Koniec gry");
-            
+
             
             setTimeout(() => {
-                console.log("reset");
                 this.setHUDText("Reset");
+                this.reloadScene();
                 
                 setTimeout(() => {
-                    console.log("Start");
                     this.restartGame();
                 }, 1000);
-            }, 1000);
-        }, 6000);
+            }, 10000);
+        }, 12000);
     }
 }
